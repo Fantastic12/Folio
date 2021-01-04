@@ -10,6 +10,7 @@
         android:padding="8dp"
         android:tint="@color/icon_tint_light"
         android:src="@drawable/ic_baseline_home_24"
+        android:background="?selectableItemBackgroundBorderless"
         android:id="@+id/item_menu_icon"
         android:layout_width="match_parent"
         android:layout_height="40dp" />

@@ -1,4 +1,4 @@
-package com.awslab.portfolioapp;
+package com.anzid.portfolioapp;
 
 import org.junit.Test;
 

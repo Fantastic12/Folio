@@ -1,4 +1,4 @@
-package com.awslab.portfolioapp;
+package com.anzid.portfolioapp;
 
 import android.content.Context;
 
