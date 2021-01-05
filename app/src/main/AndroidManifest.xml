@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:theme="@style/Filio.Splash"
-            android:name="com.anzid.portfolioapp.MainActivity">
+            android:name=".MainActivity"
+            android:theme="@style/Filio.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

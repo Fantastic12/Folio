@@ -6,16 +6,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-apply from : rootProject.file(GradleConstants.SHARED_GRADLE_FOR_ANDROID_LIB_PATH)
+kapt {
+    correctErrorTypes true
+}
+
+apply from: rootProject.file(GradleConstants.SHARED_GRADLE_FOR_ANDROID_LIB_PATH)
 
 android {
     defaultConfig {
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath true
-            }
-        }
-
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -24,6 +22,12 @@ android {
     }
 
     sourceSets {
+        main {
+            java {
+                srcDir "${buildDir.absolutePath}/generated/source/kaptKotlin/"
+            }
+        }
+
         main.java.srcDirs += 'src/main/kotlin/'
     }
 }
@@ -33,5 +37,7 @@ apply from: rootProject.file(GradleConstants.ROOM_DEPENDENCIES_GRADLE_PATH)
 dependencies {
     implementation Dependencies.Lifecycle.LIVEDATA_KTX
     implementation project(Modules.UTILS)
+    implementation project(Modules.CODOGEN_ANN)
+    kapt project(Modules.CODOGEN_PROCESSOR)
     implementation 'com.google.code.gson:gson:2.8.6'
 }

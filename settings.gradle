@@ -1,1 +1,8 @@
 include ':app', 'storage', ':utils'
+
+
+// Codogen Layer
+include ':dstarannotation', ':dstarcodegeneration'
+project(':dstarannotation').projectDir = file('codogen/dstarannotation')
+project(':dstarcodegeneration').projectDir = file('codogen/dstarcodegeneration')
+

@@ -10,6 +10,9 @@ interface BaseDao<ENTITY> {
     @Insert
     fun insert(vararg obj: ENTITY)
 
+    @Insert
+    fun insert(list: List<ENTITY>)
+
     @Update
     fun update(entity: ENTITY)
 

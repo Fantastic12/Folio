@@ -3,6 +3,9 @@ import deps.AppBuildGradleDependencies
 import org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile
 
 buildscript {
+    ext {
+        kotlin_version = '1.4.10'
+    }
     repositories {
         maven { url 'https://www.jitpack.io' }
         mavenCentral()
@@ -13,6 +16,7 @@ buildscript {
         classpath AppBuildGradleDependencies.ANDROID_GRADLE_PLUGIN
         classpath AppBuildGradleDependencies.KOTLIN_PLUGIN
         classpath AppBuildGradleDependencies.HILT_PLUGIN
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -20,7 +24,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://www.jitpack.io' }
     }
 
     tasks.withType(AbstractKotlinCompile).all {

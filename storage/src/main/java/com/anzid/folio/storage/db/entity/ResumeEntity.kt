@@ -4,9 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.anzid.folio.storage.db.entity.ResumeEntity.Companion.TABLE_NAME
+import com.anzid.utils.utils.AppState
 
 @Entity(tableName = TABLE_NAME)
-internal data class ResumeEntity(
+data class ResumeEntity(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = ID)
         val id: Long,

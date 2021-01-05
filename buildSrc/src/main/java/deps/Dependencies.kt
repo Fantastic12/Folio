@@ -7,6 +7,7 @@ import deps.DependencyVersions.ROOM
 
 object Dependencies {
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependencyVersions.KOTLIN_VERSION}"
+    const val KOTLIN_POET = "com.squareup:kotlinpoet:${DependencyVersions.KOTLIN_POET}"
 
     object Dagger {
         const val MAIN = "com.google.dagger:dagger:${DependencyVersions.DAGGER_VERSION}"
