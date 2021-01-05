@@ -1,0 +1,37 @@
+import deps.Dependencies
+import deps.Modules
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from : rootProject.file(GradleConstants.SHARED_GRADLE_FOR_ANDROID_LIB_PATH)
+
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin/'
+    }
+}
+
+apply from: rootProject.file(GradleConstants.ROOM_DEPENDENCIES_GRADLE_PATH)
+
+dependencies {
+    implementation Dependencies.Lifecycle.LIVEDATA_KTX
+    implementation project(Modules.UTILS)
+    implementation 'com.google.code.gson:gson:2.8.6'
+}

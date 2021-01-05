@@ -15,11 +15,11 @@ import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
-    List<MenuItem> mData ;
+    List<MenuItem> mData;
     Callback listener;
 
 
-    public MenuAdapter(List<MenuItem> mData,Callback listener) {
+    public MenuAdapter(List<MenuItem> mData, Callback listener) {
         this.mData = mData;
         this.listener = listener;
     }
@@ -27,7 +27,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @NonNull
     @Override
     public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu, parent, false);
         return new MenuViewHolder(view);
     }
 
@@ -38,8 +38,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         if (mData.get(position).isSelected()) {
             holder.isSelected.setVisibility(View.VISIBLE);
             holder.icon.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(), R.color.nav_selected_color));
-        }
-        else {
+        } else {
             holder.icon.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(), R.color.icon_tint));
             holder.isSelected.setVisibility(View.GONE);
         }
@@ -53,7 +52,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView icon,isSelected;
+        ImageView icon, isSelected;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -79,10 +79,9 @@ public class MainActivity extends AppCompatActivity implements Callback {
     public void onSideMenuItemClick(int i) {
 
         switch (menuItems.get(i).getCode()) {
-
-            case MenuUtil.HOME_FRAGMENT_CODE : setHomeFragment();
-            break;
-            case MenuUtil.CV_FRAGMENT_CODE : setCVFragment();
+            case MenuUtil.EDUCATION_FRAGMENT_CODE :
+            case MenuUtil.WORK_EXP_FRAGMENT_CODE :
+                setCVFragment();
             break;
             case MenuUtil.TEAM_FRAGMENT_CODE: setTeamFragment();
             break;
