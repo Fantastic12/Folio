@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
     @Override
     public void onSideMenuItemClick(int i) {
+        if(selectedMenuPos == i) return;
 
         switch (menuItems.get(i).getCode()) {
             case MenuUtil.EDUCATION_FRAGMENT_CODE :

@@ -12,16 +12,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.anzid.portfolioapp.R;
 import com.bumptech.glide.Glide;
 
+import java.util.Collections;
 import java.util.List;
 
 public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.PortfolioViewHolder> {
 
-    List<PortfolioItem> mdata;
+    List<PortfolioItem> mdata = Collections.emptyList();
     PortfolioCallback listener;
 
     public PortfolioAdapter(List<PortfolioItem> mdata,PortfolioCallback listener) {
         this.mdata = mdata;
         this.listener = listener;
+    }
+
+    public PortfolioAdapter() {
+
+    }
+
+    public void setMdata(List<PortfolioItem> list) {
+        mdata = list;
+        notifyDataSetChanged();
     }
 
 

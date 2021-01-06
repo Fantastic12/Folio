@@ -6,16 +6,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.amyu.stack_card_layout_manager.StackCardLayoutManager;
 import com.anzid.portfolioapp.R;
+import com.mcxtzhang.layoutmanager.swipecard.CardConfig;
+import com.mcxtzhang.layoutmanager.swipecard.OverLayCardLayoutManager;
+import com.mcxtzhang.layoutmanager.swipecard.RenRenCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static androidx.recyclerview.widget.StaggeredGridLayoutManager.HORIZONTAL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +35,8 @@ import java.util.List;
 public class PortfolioFragment extends Fragment implements PortfolioCallback {
 
     List<PortfolioItem> mdata;
-    RecyclerView rv_portfolio;
-    PortfolioAdapter portfolioAdapter ;
+    public RecyclerView rv_portfolio;
+    public PortfolioAdapter portfolioAdapter ;
 
 
 
@@ -67,8 +79,17 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
         portfolioAdapter = new PortfolioAdapter(mdata,this);
 
         // setup grid recyclerview
-        rv_portfolio.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        rv_portfolio.setLayoutManager(new OverLayCardLayoutManager());
+        CardConfig.initConfig(requireContext());
+        ItemTouchHelper.Callback callback = new RenRenCallback(rv_portfolio, portfolioAdapter, mdata);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(rv_portfolio);
+//        PortfolioFragmentExtKt.init(this);
         rv_portfolio.setAdapter(portfolioAdapter);
+
+        new Handler().postDelayed(() -> {
+            portfolioAdapter.setMdata(mdata);
+        }, 5000);
 
     }
 
