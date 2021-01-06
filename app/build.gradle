@@ -8,6 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from : rootProject.file(GradleConstants.SHARED_COMPILE_OPTIONS_GRADLE_PATH)
+apply from : rootProject.file(GradleConstants.SHARED_PRODUCT_FLAVORS_GRADLE_PATH)
 
 android {
     bundle {
@@ -57,6 +58,8 @@ dependencies {
     // gradle dependencies
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation project(Modules.UTILS)
 
 
     // material design library
