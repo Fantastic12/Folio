@@ -60,15 +60,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             icon = itemView.findViewById(R.id.item_menu_icon);
             isSelected = itemView.findViewById(R.id.item_menu_selected);
 
-            // menu item click listener
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onSideMenuItemClick(getAdapterPosition());
-                }
-            });
-
-
+            itemView.setOnClickListener(v -> listener.onSideMenuItemClick(getAdapterPosition()));
         }
     }
 }

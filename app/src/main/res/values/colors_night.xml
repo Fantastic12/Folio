@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="night_colorPrimary">#000000</color>
+    <color name="night_colorPrimaryDark">#000000</color>
+    <color name="night_colorAccent">#D81B60</color>
+    <color name="night_background_light">#ffffff</color>
+    <color name="night_icon_tint">#888787</color>
+    <color name="night_nav_selected_color">#ffc107</color>
+    <color name="night_card_bg_color">#252525</color>
+    <color name="night_cv_line_color">#E0E0E0</color>
+    <color name="night_icon_tint_light">#afafaf</color>
+    <color name="night_light_blue_600">#FF039BE5</color>
+    <color name="night_light_blue_900">#FF01579B</color>
+    <color name="night_light_blue_A200">#FF40C4FF</color>
+    <color name="night_light_blue_A400">#FF00B0FF</color>
+    <color name="night_black_overlay">#66000000</color>
+
+</resources>
