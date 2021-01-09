@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity(), Callback {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        // setup side menu
         setupSideMenu()
         initNightMode()
     }
@@ -40,8 +39,6 @@ class MainActivity : AppCompatActivity(), Callback {
     }
 
     private fun setupSideMenu() {
-
-        // get menu list item  will get data from a static data class
         menuItems = MenuUtil.getMenuList()
         adapter = MenuAdapter(menuItems, this)
         rv_side_menu.layoutManager = LinearLayoutManager(this)

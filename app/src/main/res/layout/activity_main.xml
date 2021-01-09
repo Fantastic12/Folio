@@ -72,7 +72,6 @@
         app:layout_constraintStart_toEndOf="@+id/rv_side_menu"
         app:layout_constraintTop_toTopOf="parent">
 
-
     </androidx.viewpager2.widget.ViewPager2>
 
 
