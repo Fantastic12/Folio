@@ -1,37 +1,29 @@
 package com.anzid.portfolioapp
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewAnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.LayoutInflaterCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.anzid.portfolioapp.night_mode.DayNightModeHelper
+import com.anzid.portfolioapp.night_mode.ThemeManager.initModeInflater
 import com.anzid.portfolioapp.sidemenu.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.hypot
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Callback {
-    
+
     private var menuItems: List<MenuItem> = emptyList()
+    private val dayNightModeHelper by lazy {
+        DayNightModeHelper(this, main_container, screen, night_mode)
+    }
     lateinit var adapter: MenuAdapter
     lateinit var listener: MainViewPagerOnChangeListener
-    
+
     var selectedMenuPos = 0
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        LayoutInflaterCompat.setFactory2(
-                LayoutInflater.from(this),
-                MyLayoutInflater(delegate)
-        )
+        initModeInflater(this, delegate)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
@@ -43,12 +35,7 @@ class MainActivity : AppCompatActivity(), Callback {
 
     private fun initNightMode() {
         night_mode.setOnClickListener {
-            val newTheme = when (ThemeManager.theme) {
-                DayNightMode.NIGHT -> DayNightMode.DAY
-                DayNightMode.DAY -> DayNightMode.NIGHT
-            }
-            updateDayNightMode(newTheme)
-//            FOLIO_APP.updateThemeMode()
+            dayNightModeHelper.updateDayNightMode()
         }
     }
 
@@ -110,56 +97,6 @@ class MainActivity : AppCompatActivity(), Callback {
         selectedMenuPos = newPosition
         adapter.notifyDataSetChanged()
     }
-
-
-    private fun updateDayNightMode(dayNightMode: DayNightMode) {
-        if (screen.visibility == View.VISIBLE) {
-            return
-        }
-        val w: Int = main_container.measuredWidth
-        val h: Int = main_container.measuredHeight
-        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-
-        val canvas = Canvas(bitmap)
-        main_container.draw(canvas)
-        screen.setImageBitmap(bitmap)
-        screen.visibility = View.VISIBLE
-
-        val finalRadius = hypot(w.toFloat(), h.toFloat())
-        val x: Int = night_mode.left
-        val y: Int = night_mode.top
-
-        ThemeManager.theme = dayNightMode
-        updateCalor()
-
-        val anim: Animator = ViewAnimationUtils.createCircularReveal(screen, x, y, finalRadius, 0f)
-        anim.duration = 1000
-        anim.interpolator = Easings.easeInOutQuad
-        anim.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                screen.setImageDrawable(null)
-                screen.visibility = View.GONE
-                night_mode.setImageRes(ThemeManager.theme)
-            }
-        })
-        anim.start()
-
-
-    }
-
-    private var isNight = false
-
-    fun updateCalor() {
-        if(isNight) {
-            window.statusBarColor = ContextCompat.getColor(this,android.R.color.white)
-            isNight = false
-        } else {
-            window.statusBarColor = ContextCompat.getColor(this,android.R.color.black)
-            isNight = true
-        }
-    }
-
-
 
     override fun onDestroy() {
         super.onDestroy()

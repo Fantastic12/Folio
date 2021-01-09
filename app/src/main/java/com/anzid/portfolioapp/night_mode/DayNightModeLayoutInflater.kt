@@ -1,4 +1,4 @@
-package com.anzid.portfolioapp
+package com.anzid.portfolioapp.night_mode
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 
-class MyLayoutInflater(
-    private val delegate: AppCompatDelegate
+class DayNightModeLayoutInflater(
+        private val delegate: AppCompatDelegate
 ) : LayoutInflater.Factory2 {
 
     override fun onCreateView(
@@ -17,9 +17,7 @@ class MyLayoutInflater(
             attrs: AttributeSet
     ): View? {
         return when (name) {
-            "TextView" -> MyTextView(context, attrs)
-//            "LinearLayout" -> MyLinearLayout(context, attrs)
-//            "Button" -> MyButton(context, attrs, R.attr.buttonStyle)
+            "TextView" -> DayNightModeTextView(context, attrs)
             else -> delegate.createView(parent, name, context, attrs)
         }
     }

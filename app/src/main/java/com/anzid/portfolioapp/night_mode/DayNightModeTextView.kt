@@ -1,13 +1,19 @@
-package com.anzid.portfolioapp
+package com.anzid.portfolioapp.night_mode
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 
-class MainDayNightModeContainer @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : ConstraintLayout(context, attrs, defStyleAttr), ThemeManager.ThemeChangedListener{
+class DayNightModeTextView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : AppCompatTextView(context, attrs, defStyleAttr), ThemeChangedListener {
+
+    init {
+        onThemeChanged(ThemeManager.mode)
+    }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -24,11 +30,11 @@ class MainDayNightModeContainer @JvmOverloads constructor(
         ThemeManager.removeListener(this)
     }
 
-    override fun onThemeChanged(theme: DayNightMode) {
-        setBackgroundColor(
+    override fun onThemeChanged(mode: DayNightMode) {
+        setTextColor(
                 ContextCompat.getColor(
                         context,
-                        theme.colorPrimary
+                        mode.theme.primaryTextColor
                 )
         )
     }
