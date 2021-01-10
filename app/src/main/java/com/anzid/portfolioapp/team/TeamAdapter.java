@@ -1,5 +1,6 @@
 package com.anzid.portfolioapp.team;
 
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,9 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anzid.portfolioapp.R;
+import com.anzid.portfolioapp.night_mode.ThemeManager;
 
 import java.util.List;
 
@@ -39,9 +43,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.tv_desc.setText(mdata.get(position).getDesc());
         holder.img.setImageResource(mdata.get(position).getImg());
 
-
-
-
+        holder.layout.getBackground().setTint(
+                ContextCompat.getColor(
+                        holder.itemView.getContext(),
+                        ThemeManager.getMode().getTheme().getCardColorBg()
+                )
+        );
     }
 
     @Override
@@ -53,6 +60,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
         TextView tv_name,tv_desc;
         ImageView img;
+        ConstraintLayout layout;
 
         public TeamViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +68,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             tv_name = itemView.findViewById(R.id.team_item_name) ;
             tv_desc = itemView.findViewById(R.id.team_item_desc);
             img = itemView.findViewById(R.id.team_item_img);
+            layout = itemView.findViewById(R.id.constraint);
         }
     }
 }

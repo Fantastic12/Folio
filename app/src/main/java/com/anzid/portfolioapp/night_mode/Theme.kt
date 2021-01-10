@@ -18,6 +18,9 @@ sealed class Theme {
     abstract val iconTint: Int
 
     @get:ColorRes
+    abstract val cardColorBg: Int
+
+    @get:ColorRes
     abstract val primaryTextColor: Int
 
     @get:ColorRes
@@ -38,6 +41,9 @@ object WhiteTheme : Theme() {
     override val iconTint: Int
         get() = R.color.icon_tint
 
+    override val cardColorBg: Int
+        get() = R.color.card_bg_color
+
     override val primaryTextColor: Int
         get() = iconTint
 
@@ -57,6 +63,9 @@ object BlackTheme : Theme() {
 
     override val iconTint: Int
         get() = R.color.night_icon_tint
+
+    override val cardColorBg: Int
+        get() = R.color.night_card_bg_color
 
     override val primaryTextColor: Int
         get() = iconTint

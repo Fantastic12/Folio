@@ -12,6 +12,7 @@ import com.anzid.portfolioapp.setTheme
 object ThemeManager {
 
     private val listeners = mutableSetOf<ThemeChangedListener>()
+    @JvmStatic
     var mode = getTheme(FolioApp.FOLIO_APP)
         set(value) {
             field = value
