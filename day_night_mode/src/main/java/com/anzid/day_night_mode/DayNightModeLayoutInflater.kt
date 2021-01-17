@@ -1,10 +1,11 @@
-package com.anzid.portfolioapp.night_mode
+package com.anzid.day_night_mode
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
+import com.anzid.day_night_mode.views.DayNightModeTextView
 
 class DayNightModeLayoutInflater(
         private val delegate: AppCompatDelegate

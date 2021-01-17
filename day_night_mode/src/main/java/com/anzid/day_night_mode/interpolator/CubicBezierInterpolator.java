@@ -1,4 +1,4 @@
-package com.anzid.portfolioapp.night_mode;
+package com.anzid.day_night_mode.interpolator;
 
 import android.graphics.PointF;
 import android.view.animation.Interpolator;

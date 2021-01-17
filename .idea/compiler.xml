@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="PortfolioApp.app" target="11" />
       <module name="PortfolioApp.buildSrc" target="11" />
+      <module name="PortfolioApp.day_night_mode" target="11" />
       <module name="PortfolioApp.storage" target="11" />
       <module name="PortfolioApp.utils" target="11" />
     </bytecodeTargetLevel>

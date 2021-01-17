@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.anzid.portfolioapp.night_mode.DayNightModeHelper
-import com.anzid.portfolioapp.night_mode.ThemeManager.initModeInflater
+import com.anzid.day_night_mode.DayNightModeHelper
+import com.anzid.day_night_mode.DayNightModeInitializer
 import com.anzid.portfolioapp.sidemenu.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), Callback {
     var selectedMenuPos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        initModeInflater(this, delegate)
+        DayNightModeInitializer.getDayNightModeManager().initModeInflater(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()

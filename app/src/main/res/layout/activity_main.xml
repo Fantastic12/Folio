@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.anzid.portfolioapp.night_mode.MainDayNightModeContainer xmlns:android="http://schemas.android.com/apk/res/android"
+<com.anzid.day_night_mode.views.MainDayNightModeContainer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_container"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_settings_24" />
 
-    <com.anzid.portfolioapp.night_mode.DayNightModeImageView
+    <com.anzid.day_night_mode.views.SunnyOrMoonImageView
         android:id="@+id/night_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,4 +75,4 @@
     </androidx.viewpager2.widget.ViewPager2>
 
 
-</com.anzid.portfolioapp.night_mode.MainDayNightModeContainer>
+</com.anzid.day_night_mode.views.MainDayNightModeContainer>

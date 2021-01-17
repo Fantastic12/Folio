@@ -1,6 +1,5 @@
 package com.anzid.portfolioapp.team;
 
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anzid.day_night_mode.DayNightModeInitializer;
 import com.anzid.portfolioapp.R;
-import com.anzid.portfolioapp.night_mode.ThemeManager;
 
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.layout.getBackground().setTint(
                 ContextCompat.getColor(
                         holder.itemView.getContext(),
-                        ThemeManager.getMode().getTheme().getCardColorBg()
+                        DayNightModeInitializer.getDayNightMode().getTheme().getCardColorBg()
                 )
         );
     }
