@@ -20,7 +20,7 @@ internal class DayNightModeLayoutInflater(
     ): View? {
         return when (name) {
             "TextView" -> DayNightModeTextView(context, attrs)
-            "MaterialCardView" -> DayNightModeCardView(context, attrs)
+            "com.google.android.material.card.MaterialCardView" -> DayNightModeCardView(context, attrs)
             else -> delegate.createView(parent, name, context, attrs)
         }
     }

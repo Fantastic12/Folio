@@ -1,6 +1,7 @@
 package com.anzid.day_night_mode.views
 
 import android.content.Context
+import android.os.Build
 import android.util.AttributeSet
 import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.dayNightMode
@@ -17,6 +18,8 @@ class DayNightModeCardView @JvmOverloads constructor(
     }
 
     override fun onThemeChanged(mode: DayNightMode) {
-        setBackgroundColor(mode.theme.primaryTextColor)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            background.setTint(mode.theme.backgroundColor)
+        }
     }
 }

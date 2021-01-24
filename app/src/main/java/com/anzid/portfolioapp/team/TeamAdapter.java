@@ -41,7 +41,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.tv_desc.setText(mdata.get(position).getDesc());
         holder.img.setImageResource(mdata.get(position).getImg());
 
-        holder.layout.setCardBackgroundColor(DayNightModeInitializer.getDayNightMode().getTheme().getBackgroundColor());
+        holder.layout.getBackground().setTint(DayNightModeInitializer.getDayNightMode().getTheme().getBackgroundColor());
     }
 
     @Override
