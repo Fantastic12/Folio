@@ -5,10 +5,10 @@ import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.LayoutInflaterCompat
 import com.anzid.day_night_mode.DayMode
 import com.anzid.day_night_mode.DayNightMode
+import com.anzid.day_night_mode.DayNightMode.Companion.updateThemeForMode
 import com.anzid.day_night_mode.DayNightModeLayoutInflater
 import com.anzid.day_night_mode.NightMode
 import com.anzid.day_night_mode.store.DayNightModeStore
@@ -55,12 +55,17 @@ class DayNightModeManagerImpl(private val context: Context,
     }
 
     override fun updateSelectedThemeAndModeIfNeeded(newTheme: Theme) {
-        if (newTheme.isNightMode) {
-            store.setSelectedThemeForNightMode(newTheme)
-            if (mode is DayMode) mode = DayNightMode.updateMode()
-        } else {
-            store.setSelectedThemeForDayMode(newTheme)
-            if (mode is NightMode) mode = DayNightMode.updateMode()
+        when (newTheme.isNightMode) {
+            true -> {
+                store.setSelectedThemeForNightMode(newTheme)
+                mode = if (mode is DayMode) DayNightMode.updateMode()
+                else updateThemeForMode()
+            }
+            false -> {
+                store.setSelectedThemeForDayMode(newTheme)
+                mode = if (mode is NightMode) DayNightMode.updateMode()
+                else updateThemeForMode()
+            }
         }
     }
 }

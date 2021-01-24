@@ -27,6 +27,13 @@ sealed class DayNightMode {
                 is NightMode -> DayMode(store.getSelectedThemeForDayMode())
             }
         }
+
+        fun updateThemeForMode(): DayNightMode {
+            return when (DayNightModeInitializer.getDayNightMode()) {
+                is DayMode -> DayMode(store.getSelectedThemeForDayMode())
+                is NightMode -> NightMode(store.getSelectedThemeForNightMode())
+            }
+        }
     }
 
     abstract val theme: Theme
