@@ -5,10 +5,9 @@ import android.preference.PreferenceManager
 import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.DayNightModeInitializer
 import com.anzid.day_night_mode.DayNightModeInitializer.themes
-import com.anzid.day_night_mode.theme.ThemeModel
 import com.anzid.day_night_mode.theme.Theme
 
-class DefaultDayNightModeStore(private val context: Context) : DayNightModeStore {
+internal class DefaultDayNightModeStore(private val context: Context) : DayNightModeStore {
 
     private val prefMode = "pref_mode"
     private val selectedDayTheme = "pref_selected_theme_for_day"
@@ -21,14 +20,6 @@ class DefaultDayNightModeStore(private val context: Context) : DayNightModeStore
     override fun getDayNightMode(): DayNightMode {
         val ordinal = PreferenceManager.getDefaultSharedPreferences(context).getInt(prefMode, DayNightMode.DAY_MODE)
         return DayNightMode.getModeWithSelectedTheme(ordinal, this)
-    }
-
-    override fun setSelectedThemeForDayMode(model: ThemeModel) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(selectedDayTheme, model.id).apply()
-    }
-
-    override fun setSelectedThemeForNightMode(model: ThemeModel) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(selectedNightTheme, model.id).apply()
     }
 
     override fun getSelectedThemeForDayMode(): Theme {

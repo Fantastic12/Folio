@@ -15,15 +15,6 @@ object DayNightModeInitializer {
     internal val themes: MutableSet<ThemeModel> = mutableSetOf()
 
     @JvmStatic
-    fun initAppDayNightMode(context: Context,
-                            store: DayNightModeStore? = null,
-                            vararg theme: ThemeModel) {
-        appContext = context
-        themes.addAll(theme)
-        initDayNightModeManager(store)
-    }
-
-    @JvmStatic
     fun getDayNightMode() = getDayNightModeManager().mode
 
     @JvmStatic
@@ -41,6 +32,14 @@ object DayNightModeInitializer {
         }
 
         return dayNightModeManager
+    }
+
+    internal fun initAppDayNightMode(context: Context,
+                                     store: DayNightModeStore,
+                                     theme: Array<ThemeModel>) {
+        appContext = context
+        themes.addAll(theme)
+        initDayNightModeManager(store)
     }
 
     @JvmStatic

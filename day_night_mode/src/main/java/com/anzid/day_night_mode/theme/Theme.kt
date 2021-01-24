@@ -16,7 +16,7 @@ interface Theme {
     val iconTint: Int
 
     @get:ColorRes
-    val cardColorBg: Int
+    val backgroundColor: Int
 
     @get:ColorRes
     val primaryTextColor: Int

@@ -45,7 +45,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.layout.getBackground().setTint(
                 ContextCompat.getColor(
                         holder.itemView.getContext(),
-                        DayNightModeInitializer.getDayNightMode().getTheme().getCardColorBg()
+                        DayNightModeInitializer.getDayNightMode().getTheme().getBackgroundColor()
                 )
         );
     }

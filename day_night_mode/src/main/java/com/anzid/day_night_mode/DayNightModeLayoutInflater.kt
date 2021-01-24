@@ -7,7 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import com.anzid.day_night_mode.views.DayNightModeTextView
 
-class DayNightModeLayoutInflater(
+internal class DayNightModeLayoutInflater(
         private val delegate: AppCompatDelegate
 ) : LayoutInflater.Factory2 {
 

@@ -10,8 +10,8 @@ import androidx.core.view.LayoutInflaterCompat
 import com.anzid.day_night_mode.store.DayNightModeStore
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 
-class DayNightModeManagerImpl(private val context: Context,
-                              private val store: DayNightModeStore) : DayNightModeManager {
+internal class DayNightModeManagerImpl(private val context: Context,
+                                       private val store: DayNightModeStore) : DayNightModeManager {
 
     private val listeners = mutableSetOf<ThemeChangedListener>()
 

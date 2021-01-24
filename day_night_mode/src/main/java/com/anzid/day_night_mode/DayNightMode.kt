@@ -23,8 +23,8 @@ sealed class DayNightMode {
 
         fun updateMode(): DayNightMode {
             return when (DayNightModeInitializer.getDayNightMode()) {
-                is DayMode -> NightMode(DayNightModeInitializer.getDayNightModeStore().getSelectedThemeForNightMode())
-                is NightMode -> DayMode(DayNightModeInitializer.getDayNightModeStore().getSelectedThemeForDayMode())
+                is DayMode -> NightMode(store.getSelectedThemeForNightMode())
+                is NightMode -> DayMode(store.getSelectedThemeForDayMode())
             }
         }
     }

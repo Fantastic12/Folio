@@ -1,9 +1,9 @@
 package com.anzid.portfolioapp.themes
 
+import com.anzid.day_night_mode.theme.Theme
 import com.anzid.portfolioapp.R
-import com.anzid.day_night_mode.theme.DefaultDayModeTheme
 
-object WhiteTheme : DefaultDayModeTheme {
+object WhiteTheme : Theme {
     override val colorPrimary: Int
         get() = R.color.colorPrimary
 
@@ -16,7 +16,7 @@ object WhiteTheme : DefaultDayModeTheme {
     override val iconTint: Int
         get() = R.color.icon_tint
 
-    override val cardColorBg: Int
+    override val backgroundColor: Int
         get() = R.color.card_bg_color
 
     override val primaryTextColor: Int
