@@ -1,5 +1,6 @@
 package com.anzid.portfolioapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +36,12 @@ class MainActivity : AppCompatActivity(), Callback {
     private fun initNightMode() {
         night_mode.setOnClickListener {
             dayNightModeHelper.updateDayNightMode()
+        }
+
+        settings.setOnClickListener {
+            Intent(this, SettingsActivity::class.java).also {
+                startActivity(it)
+            }
         }
     }
 

@@ -24,4 +24,7 @@ object WhiteTheme : Theme {
 
     override val secondTextColor: Int
         get() = iconTint
+
+    override val statusBarColor: Int
+        get() = colorPrimary
 }

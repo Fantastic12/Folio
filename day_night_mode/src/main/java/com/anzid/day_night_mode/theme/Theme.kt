@@ -23,4 +23,7 @@ interface Theme {
 
     @get:ColorRes
     val secondTextColor: Int
+
+    @get:ColorRes
+    val statusBarColor: Int
 }

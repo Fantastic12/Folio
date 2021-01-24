@@ -1,8 +1,9 @@
-package com.anzid.day_night_mode
+package com.anzid.day_night_mode.manager
 
 import android.app.Activity
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.store.DayNightModeStore
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 

@@ -2,6 +2,8 @@ package com.anzid.day_night_mode
 
 import android.content.Context
 import android.util.Log
+import com.anzid.day_night_mode.manager.DayNightModeManager
+import com.anzid.day_night_mode.manager.DayNightModeManagerImpl
 import com.anzid.day_night_mode.store.DayNightModeStore
 import com.anzid.day_night_mode.store.DefaultDayNightModeStore
 import com.anzid.day_night_mode.theme.ThemeId

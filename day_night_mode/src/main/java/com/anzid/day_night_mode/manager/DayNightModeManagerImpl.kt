@@ -1,4 +1,4 @@
-package com.anzid.day_night_mode
+package com.anzid.day_night_mode.manager
 
 import android.app.Activity
 import android.content.Context
@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.LayoutInflaterCompat
+import com.anzid.day_night_mode.DayMode
+import com.anzid.day_night_mode.DayNightModeLayoutInflater
 import com.anzid.day_night_mode.store.DayNightModeStore
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 
-internal class DayNightModeManagerImpl(private val context: Context,
-                                       private val store: DayNightModeStore) : DayNightModeManager {
+class DayNightModeManagerImpl(private val context: Context,
+                              private val store: DayNightModeStore) : DayNightModeManager {
 
     private val listeners = mutableSetOf<ThemeChangedListener>()
 
@@ -43,11 +45,7 @@ internal class DayNightModeManagerImpl(private val context: Context,
 
     override fun updateStatusBar(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (mode is DayMode) {
-                activity.window.statusBarColor = ContextCompat.getColor(context, android.R.color.white)
-            } else {
-                activity.window.statusBarColor = ContextCompat.getColor(context, android.R.color.black)
-            }
+            activity.window.statusBarColor = ContextCompat.getColor(context, mode.theme.statusBarColor)
         }
     }
 }
