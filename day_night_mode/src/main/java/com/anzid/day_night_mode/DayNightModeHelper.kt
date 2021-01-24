@@ -12,7 +12,7 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import com.anzid.day_night_mode.DayNightMode.Companion.updateMode
 import com.anzid.day_night_mode.interpolator.Easings
-import com.anzid.day_night_mode.views.SunnyOrMoonImageView
+import com.anzid.day_night_mode.views.sunny_or_moon.SunnyOrMoonImageView
 import kotlin.math.hypot
 
 class DayNightModeHelper(private val activity: Activity,

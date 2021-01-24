@@ -10,10 +10,10 @@ internal val store: DayNightModeStore
 internal val View.dayNightMode: DayNightMode
     get() = DayNightModeInitializer.getDayNightMode()
 
-internal fun View.addThemeListener(listener: ThemeChangedListener) {
+internal fun View.addThemeListener(listener: ChangeListener) {
     DayNightModeInitializer.getDayNightModeManager().addListener(listener)
 }
 
-internal fun View.removeThemeListener(listener: ThemeChangedListener) {
+internal fun View.removeThemeListener(listener: ChangeListener) {
     DayNightModeInitializer.getDayNightModeManager().removeListener(listener)
 }

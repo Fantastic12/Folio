@@ -1,21 +1,34 @@
-package com.anzid.day_night_mode.views
+package com.anzid.day_night_mode.views.sunny_or_moon
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
-import com.anzid.day_night_mode.DayNightMode
-import com.anzid.day_night_mode.NightMode
-import com.anzid.day_night_mode.R
+import com.anzid.day_night_mode.*
 import com.anzid.day_night_mode.dayNightMode
 
 class SunnyOrMoonImageView @JvmOverloads constructor(context: Context,
                                                      attrs: AttributeSet? = null,
                                                      defStyleAttr: Int = 0
-) : AppCompatImageView(context, attrs, defStyleAttr) {
+) : AppCompatImageView(context, attrs, defStyleAttr), SunnyOrMoonChangeListener {
 
     init {
         onModeChangedDefault(dayNightMode)
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        addThemeListener(this)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        addThemeListener(this)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        removeThemeListener(this)
     }
 
     fun onModeChangedDefault(mode: DayNightMode) {
@@ -32,5 +45,9 @@ class SunnyOrMoonImageView @JvmOverloads constructor(context: Context,
 
         if (mode is NightMode) setImageResource(day)
         else setImageResource(night)
+    }
+
+    override fun onUpdate(mode: DayNightMode) {
+        onModeChangedDefault(mode)
     }
 }

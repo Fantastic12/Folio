@@ -51,7 +51,7 @@
         app:srcCompat="@drawable/ic_settings_24"
         app:tint="@color/icon_tint_light" />
 
-    <com.anzid.day_night_mode.views.SunnyOrMoonImageView
+    <com.anzid.day_night_mode.views.sunny_or_moon.SunnyOrMoonImageView
         android:id="@+id/night_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
