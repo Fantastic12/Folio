@@ -8,12 +8,14 @@ import com.anzid.day_night_mode.theme.ThemeModel
 class DayNightModeConfiguration private constructor(
         private val context: Context,
         private val themes: Array<ThemeModel>,
-        private val dayNightModeStore: DayNightModeStore
+        private val dayNightModeStore: DayNightModeStore,
+        private val onModeChange: (DayNightMode) -> Unit
 ) {
 
     class Builder(private val context: Context) {
         private var themes = arrayOf<ThemeModel>()
         private var dayNightModeStore: DayNightModeStore = DefaultDayNightModeStore(context)
+        private var onModeChange: (DayNightMode) -> Unit = {}
 
         fun setTheme(themeModel: ThemeModel) = apply {
             themeModel.id = themes.size + 1
@@ -24,11 +26,21 @@ class DayNightModeConfiguration private constructor(
             dayNightModeStore = store
         }
 
-        fun configure() = DayNightModeConfiguration(context, themes, dayNightModeStore).also {
+        fun setOnModeChangeListener(modeChange: (DayNightMode) -> Unit) = apply {
+            onModeChange = modeChange
+        }
+
+        fun configure() = DayNightModeConfiguration(
+                context,
+                themes,
+                dayNightModeStore,
+                onModeChange
+        ).also {
             DayNightModeInitializer.initAppDayNightMode(
                     it.context,
                     it.dayNightModeStore,
-                    it.themes
+                    it.themes,
+                    it.onModeChange
             )
         }
     }

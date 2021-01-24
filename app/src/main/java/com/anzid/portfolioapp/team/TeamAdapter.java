@@ -7,8 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anzid.day_night_mode.DayNightModeInitializer;
@@ -30,7 +29,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     public TeamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_team,parent,false);
+                .inflate(R.layout.item_team, parent, false);
 
         return new TeamViewHolder(view);
     }
@@ -42,12 +41,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.tv_desc.setText(mdata.get(position).getDesc());
         holder.img.setImageResource(mdata.get(position).getImg());
 
-        holder.layout.getBackground().setTint(
-                ContextCompat.getColor(
-                        holder.itemView.getContext(),
-                        DayNightModeInitializer.getDayNightMode().getTheme().getBackgroundColor()
-                )
-        );
+        holder.layout.setCardBackgroundColor(DayNightModeInitializer.getDayNightMode().getTheme().getBackgroundColor());
     }
 
     @Override
@@ -57,14 +51,14 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     public class TeamViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_name,tv_desc;
+        TextView tv_name, tv_desc;
         ImageView img;
-        ConstraintLayout layout;
+        CardView layout;
 
         public TeamViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_name = itemView.findViewById(R.id.team_item_name) ;
+            tv_name = itemView.findViewById(R.id.team_item_name);
             tv_desc = itemView.findViewById(R.id.team_item_desc);
             img = itemView.findViewById(R.id.team_item_img);
             layout = itemView.findViewById(R.id.constraint);

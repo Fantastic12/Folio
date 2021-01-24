@@ -4,20 +4,23 @@ import com.anzid.day_night_mode.theme.Theme
 import com.anzid.portfolioapp.R
 
 object WhiteTheme : Theme {
+    override val isNightMode: Boolean
+        get() = false
+
     override val colorPrimary: Int
-        get() = R.color.colorPrimary
+        get() = getColorIntByRes(R.color.colorPrimary)
 
     override val colorPrimaryDark: Int
-        get() = R.color.colorPrimaryDark
+        get() = getColorIntByRes(R.color.colorPrimaryDark)
 
     override val colorAccent: Int
-        get() = R.color.colorAccent
+        get() = getColorIntByRes(R.color.colorAccent)
 
     override val iconTint: Int
-        get() = R.color.icon_tint
+        get() = getColorIntByRes(R.color.icon_tint)
 
     override val backgroundColor: Int
-        get() = R.color.card_bg_color
+        get() = getColorIntByRes(R.color.card_bg_color)
 
     override val primaryTextColor: Int
         get() = iconTint

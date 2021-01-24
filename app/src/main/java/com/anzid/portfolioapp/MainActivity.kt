@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity(), Callback {
         initNightMode()
     }
 
+    override fun onResume() {
+        super.onResume()
+        DayNightModeInitializer.getDayNightModeManager().updateStatusBar(this)
+    }
+
     private fun initNightMode() {
         night_mode.setOnClickListener {
             dayNightModeHelper.updateDayNightMode()

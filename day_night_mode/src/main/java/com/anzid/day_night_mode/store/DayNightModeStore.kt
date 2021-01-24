@@ -7,6 +7,9 @@ interface DayNightModeStore {
     fun setDayNightMode(mode: DayNightMode)
     fun getDayNightMode(): DayNightMode
 
+    fun setSelectedThemeForDayMode(theme: Theme)
+    fun setSelectedThemeForNightMode(theme: Theme)
+
     fun getSelectedThemeForDayMode(): Theme
     fun getSelectedThemeForNightMode(): Theme
 }

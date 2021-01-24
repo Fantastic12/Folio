@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
+import com.anzid.day_night_mode.views.DayNightModeCardView
 import com.anzid.day_night_mode.views.DayNightModeTextView
 
 internal class DayNightModeLayoutInflater(
@@ -19,6 +20,7 @@ internal class DayNightModeLayoutInflater(
     ): View? {
         return when (name) {
             "TextView" -> DayNightModeTextView(context, attrs)
+            "MaterialCardView" -> DayNightModeCardView(context, attrs)
             else -> delegate.createView(parent, name, context, attrs)
         }
     }

@@ -1,9 +1,15 @@
 package com.anzid.portfolioapp
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.anzid.day_night_mode.DayNightModeInitializer
+import com.anzid.portfolioapp.themes.BlackTheme
+import com.anzid.portfolioapp.themes.DarkTheme
+import com.anzid.portfolioapp.themes.WhiteTheme
 
 private const val TITLE_TAG = "settingsActivityTitle"
 
@@ -36,10 +42,8 @@ class SettingsActivity : AppCompatActivity(),
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        if (supportFragmentManager.popBackStackImmediate()) {
-            return true
-        }
-        return super.onSupportNavigateUp()
+        onBackPressed()
+        return true
     }
 
     override fun onPreferenceStartFragment(
@@ -73,6 +77,20 @@ class SettingsActivity : AppCompatActivity(),
     class MessagesFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.messages_preferences, rootKey)
+        }
+
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            findPreference<ListPreference>("theme")?.setOnPreferenceChangeListener { preference, newValue ->
+                val newTheme = when (newValue) {
+                    "white" -> WhiteTheme
+                    "black" -> BlackTheme
+                    "dark" -> DarkTheme
+                    else -> throw AssertionError()
+                }
+                DayNightModeInitializer.getDayNightModeManager().updateSelectedThemeAndModeIfNeeded(newTheme)
+                true
+            }
         }
     }
 

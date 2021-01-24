@@ -1,29 +1,39 @@
 package com.anzid.day_night_mode.theme
 
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
+import com.anzid.day_night_mode.DayNightModeInitializer
 
 interface Theme {
-    @get:ColorRes
+    val isNightMode: Boolean
+
+    @get:ColorInt
     val colorPrimary: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val colorPrimaryDark: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val colorAccent: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val iconTint: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val backgroundColor: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val primaryTextColor: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val secondTextColor: Int
 
-    @get:ColorRes
+    @get:ColorInt
     val statusBarColor: Int
+
+    @ColorInt
+    fun getColorIntByRes(@ColorRes colorRes: Int): Int {
+        return ContextCompat.getColor(DayNightModeInitializer.appContext, colorRes)
+    }
 }

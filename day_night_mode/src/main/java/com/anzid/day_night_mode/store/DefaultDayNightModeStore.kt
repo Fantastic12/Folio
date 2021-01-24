@@ -22,6 +22,18 @@ internal class DefaultDayNightModeStore(private val context: Context) : DayNight
         return DayNightMode.getModeWithSelectedTheme(ordinal, this)
     }
 
+    override fun setSelectedThemeForDayMode(theme: Theme) {
+        val themeModel = themes.find { it.theme == theme }
+                ?: throw AssertionError("not find theme in DayNightModeConfiguration")
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(selectedDayTheme, themeModel.id).apply()
+    }
+
+    override fun setSelectedThemeForNightMode(theme: Theme) {
+        val themeModel = themes.find { it.theme == theme }
+                ?: throw AssertionError("not find theme in DayNightModeConfiguration")
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(selectedNightTheme, themeModel.id).apply()
+    }
+
     override fun getSelectedThemeForDayMode(): Theme {
         val id = PreferenceManager.getDefaultSharedPreferences(context).getInt(selectedDayTheme, DayNightModeInitializer.getDefaultDayModeThemeId())
 

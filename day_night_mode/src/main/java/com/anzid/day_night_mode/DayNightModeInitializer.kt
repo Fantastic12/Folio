@@ -11,7 +11,7 @@ import com.anzid.day_night_mode.theme.ThemeModel
 
 object DayNightModeInitializer {
 
-    private lateinit var appContext: Context
+    internal lateinit var appContext: Context
     private lateinit var dayNightModeManager: DayNightModeManager
 
     internal val themes: MutableSet<ThemeModel> = mutableSetOf()
@@ -25,11 +25,11 @@ object DayNightModeInitializer {
     @JvmStatic
     fun getDayNightModeManager(): DayNightModeManager {
         if (::dayNightModeManager.isInitialized.not()) {
-            if (::appContext.isInitialized.not()) throw AssertionError("initAppThemes was not called")
+            if (::appContext.isInitialized.not()) throw AssertionError("initAppDayNightMode() was not called")
             dayNightModeManager = DayNightModeManagerImpl(
                     appContext,
                     DefaultDayNightModeStore(appContext)
-            )
+            ) {}
             Log.e(DayNightModeInitializer.toString(), "init dayNightModeManager by default")
         }
 
@@ -38,10 +38,11 @@ object DayNightModeInitializer {
 
     internal fun initAppDayNightMode(context: Context,
                                      store: DayNightModeStore,
-                                     theme: Array<ThemeModel>) {
+                                     theme: Array<ThemeModel>,
+                                     onModeChange: (DayNightMode) -> Unit) {
         appContext = context
         themes.addAll(theme)
-        initDayNightModeManager(store)
+        initDayNightModeManager(store, onModeChange)
     }
 
     @JvmStatic
@@ -70,12 +71,13 @@ object DayNightModeInitializer {
         throw AssertionError("not find isDefaultDayMode = true")
     }
 
-    private fun initDayNightModeManager(store: DayNightModeStore?) {
+    private fun initDayNightModeManager(store: DayNightModeStore?, onModeChange: (DayNightMode) -> Unit) {
         if (::dayNightModeManager.isInitialized.not()) {
-            if (::appContext.isInitialized.not()) throw AssertionError("initAppThemes was not called")
+            if (::appContext.isInitialized.not()) throw AssertionError("initAppDayNightMode() was not called")
             dayNightModeManager = DayNightModeManagerImpl(
                     appContext,
-                    store ?: DefaultDayNightModeStore(appContext)
+                    store ?: DefaultDayNightModeStore(appContext),
+                    onModeChange
             )
         }
     }
