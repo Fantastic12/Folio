@@ -20,8 +20,10 @@ class DayNightModeHelper(private val activity: Activity,
                          private val screen: ImageView,
                          private val nightMode: SunnyOrMoonImageView) {
 
-    companion object {
-        private const val ANIMATION_DURATION = 1000L
+    private var animationDuration = 1000L
+
+    fun setAnimationDuration(duration: Long) {
+        animationDuration = duration
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -51,7 +53,7 @@ class DayNightModeHelper(private val activity: Activity,
         val y = (nightMode.bottom - nightMode.top) / 2 + nightMode.top
 
         val anim: Animator = ViewAnimationUtils.createCircularReveal(screen, x, y, finalRadius, 0f)
-        anim.duration = ANIMATION_DURATION
+        anim.duration = animationDuration
         anim.interpolator = Easings.easeInOutQuad
         anim.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
