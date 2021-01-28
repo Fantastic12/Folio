@@ -1,3 +1,0 @@
-package com.dstarlab.dstarcodegeneration.componentinjector
-
-class ComponentInjectorObjectBuilder()

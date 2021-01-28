@@ -20,7 +20,7 @@ class DayNightModeHelper(private val activity: Activity,
                          private val screen: ImageView,
                          private val nightMode: SunnyOrMoonImageView) {
 
-    private var animationDuration = 1000L
+    private var animationDuration = 400L
 
     fun setAnimationDuration(duration: Long) {
         animationDuration = duration

@@ -23,7 +23,7 @@ object BlackTheme : Theme {
         get() = getColorIntByRes(R.color.night_card_bg_color)
 
     override val primaryTextColor: Int
-        get() = iconTint
+        get() = getColorIntByRes(R.color.night_background_light)
 
     override val secondTextColor: Int
         get() = iconTint
