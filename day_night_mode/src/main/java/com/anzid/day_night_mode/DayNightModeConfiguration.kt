@@ -18,7 +18,7 @@ class DayNightModeConfiguration private constructor(
         private var onModeChange: (DayNightMode) -> Unit = {}
 
         fun setTheme(themeModel: ThemeModel) = apply {
-            themeModel.id = themes.size + 1
+            themeModel.incrementId(themes)
             themes = themes.plusElement(themeModel)
         }
 

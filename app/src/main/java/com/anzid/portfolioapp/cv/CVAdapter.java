@@ -3,16 +3,19 @@ package com.anzid.portfolioapp.cv;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anzid.day_night_mode.DayNightModeAdapter;
 import com.anzid.portfolioapp.R;
+import com.anzid.portfolioapp.themes.ExtKt;
 
 import java.util.List;
 
-public class CVAdapter extends RecyclerView.Adapter<CVAdapter.CVViewHolder> {
+public class CVAdapter extends DayNightModeAdapter<CVAdapter.CVViewHolder> {
 
 
     List<CVItem> mdata;
@@ -36,7 +39,8 @@ public class CVAdapter extends RecyclerView.Adapter<CVAdapter.CVViewHolder> {
 
         holder.tvTitle.setText(mdata.get(position).getTitle());
         holder.tvDescription.setText(mdata.get(position).getDescription());
-
+        holder.circle.getDrawable().setTint(ExtKt.getSelectedTheme().getCvLine());
+        holder.line.setBackgroundColor(ExtKt.getSelectedTheme().getCvLine());
     }
 
     @Override
@@ -44,14 +48,18 @@ public class CVAdapter extends RecyclerView.Adapter<CVAdapter.CVViewHolder> {
         return mdata.size();
     }
 
-    public class CVViewHolder extends RecyclerView.ViewHolder {
+    public static class CVViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle,tvDescription;
+        ImageView circle;
+        View line;
 
         public CVViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.item_cv_title);
             tvDescription = itemView.findViewById(R.id.item_cv_desc);
+            circle = itemView.findViewById(R.id.imageView);
+            line = itemView.findViewById(R.id.view);
         }
     }
 }

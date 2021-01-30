@@ -3,7 +3,7 @@
     <Preference
         app:fragment="com.anzid.portfolioapp.SettingsActivity$MessagesFragment"
         app:icon="@drawable/ic_baseline_brightness"
-        app:key="messages_header"
+        app:key="theme_header"
         app:title="@string/theme_header" />
 
     <Preference

@@ -1,24 +1,33 @@
 package com.anzid.portfolioapp
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.DayNightModeInitializer
+import com.anzid.day_night_mode.views.base.BaseDayNightModeActivity
+import com.anzid.day_night_mode.views.base.BaseDayNightModePreferenceFragment
 import com.anzid.portfolioapp.themes.BlackTheme
 import com.anzid.portfolioapp.themes.DarkTheme
+import com.anzid.portfolioapp.themes.LightTheme
 import com.anzid.portfolioapp.themes.WhiteTheme
+import kotlinx.android.synthetic.main.settings_activity.*
 
 private const val TITLE_TAG = "settingsActivityTitle"
 
-class SettingsActivity : AppCompatActivity(),
+class SettingsActivity : BaseDayNightModeActivity(),
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        DayNightModeInitializer.getDayNightModeManager().initModeInflater(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)
+
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
@@ -27,12 +36,10 @@ class SettingsActivity : AppCompatActivity(),
         } else {
             title = savedInstanceState.getCharSequence(TITLE_TAG)
         }
-        supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
-                setTitle(R.string.title_activity_settings)
-            }
+        supportActionBar?.hide()
+        back_button.setOnClickListener {
+            onBackPressed()
         }
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -68,13 +75,25 @@ class SettingsActivity : AppCompatActivity(),
         return true
     }
 
-    class HeaderFragment : PreferenceFragmentCompat() {
+    override fun onThemeChanged(mode: DayNightMode) {
+        container.setBackgroundColor(mode.theme.colorPrimary)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(mode.theme.colorPrimary))
+        window.statusBarColor = mode.theme.colorPrimary
+        back_button.setColorFilter(mode.theme.primaryTextColor)
+    }
+
+    class HeaderFragment : BaseDayNightModePreferenceFragment() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.header_preferences, rootKey)
         }
+
+        override fun onThemeChanged(mode: DayNightMode) {
+            findPreference<Preference>("theme_header")?.icon?.setTint(mode.theme.iconTint)
+            findPreference<Preference>("sync_header")?.icon?.setTint(mode.theme.iconTint)
+        }
     }
 
-    class MessagesFragment : PreferenceFragmentCompat() {
+    class MessagesFragment : BaseDayNightModePreferenceFragment() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.messages_preferences, rootKey)
         }
@@ -86,11 +105,16 @@ class SettingsActivity : AppCompatActivity(),
                     "white" -> WhiteTheme
                     "black" -> BlackTheme
                     "dark" -> DarkTheme
+                    "light" -> LightTheme
                     else -> throw AssertionError()
                 }
                 DayNightModeInitializer.getDayNightModeManager().updateSelectedThemeAndModeIfNeeded(newTheme)
                 true
             }
+        }
+
+        override fun onThemeChanged(mode: DayNightMode) {
+            findPreference<ListPreference>("theme")?.icon?.setTint(mode.theme.iconTint)
         }
     }
 

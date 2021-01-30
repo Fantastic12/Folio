@@ -1,5 +1,6 @@
 package com.anzid.day_night_mode.theme
 
+import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
@@ -35,5 +36,10 @@ interface Theme {
     @ColorInt
     fun getColorIntByRes(@ColorRes colorRes: Int): Int {
         return ContextCompat.getColor(DayNightModeInitializer.appContext, colorRes)
+    }
+
+    @ColorInt
+    fun getColorIntByHex(hex: String): Int {
+        return Color.parseColor(hex)
     }
 }

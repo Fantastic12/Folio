@@ -37,9 +37,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         holder.icon.setImageResource(mData.get(position).getIcon());
         if (mData.get(position).isSelected()) {
             holder.isSelected.setVisibility(View.VISIBLE);
-            holder.icon.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(), R.color.nav_selected_color));
+            holder.icon.setSelectedStatus(true);
         } else {
-            holder.icon.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(), R.color.icon_tint));
+            holder.icon.setSelectedStatus(false);
             holder.isSelected.setVisibility(View.GONE);
         }
 
@@ -52,7 +52,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView icon, isSelected;
+        MenuImageView icon;
+        ImageView isSelected;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anzid.portfolioapp.R;
+import com.anzid.portfolioapp.themes.ExtKt;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -51,6 +52,7 @@ public class PortfolioFragmentDetails extends BottomSheetDialogFragment {
         imgPortfolio = view.findViewById(R.id.portfolio_details_img);
         title = view.findViewById(R.id.portfolio_details_title);
         description = view.findViewById(R.id.portfolio_details_desc);
+        view.findViewById(R.id.container).setBackgroundColor(ExtKt.getSelectedTheme().getBackgroundColor());
 
         // first we need to get our portfolio object from the bundle we have sent
 
@@ -61,13 +63,11 @@ public class PortfolioFragmentDetails extends BottomSheetDialogFragment {
 
         loadPortfolioData(item);
 
-
-
     }
 
     void loadPortfolioData(PortfolioItem item) {
 
-        Glide.with(getContext()).load(item.getImage()).into(imgPortfolio);
+        Glide.with(requireActivity()).load(item.getImage()).into(imgPortfolio);
         // bind title and description ...
 
     }

@@ -2,25 +2,26 @@ package com.anzid.portfolioapp.themes
 
 import android.graphics.Color
 import com.anzid.day_night_mode.theme.Theme
+import com.anzid.portfolioapp.R
 
-object DarkTheme : FolioTheme {
+object LightTheme : FolioTheme {
     override val isNightMode: Boolean
-        get() = true
+        get() = false
 
     override val colorPrimary: Int
-        get() = getColorIntByHex("#0c2533")
+        get() = Color.CYAN
 
     override val colorPrimaryDark: Int
-        get() = getColorIntByHex("#0c2533")
+        get() = Color.CYAN
 
     override val colorAccent: Int
-        get() = Color.RED
+        get() = getColorIntByRes(R.color.colorAccent)
 
     override val iconTint: Int
-        get() = Color.GRAY
+        get() = getColorIntByRes(R.color.night_card_bg_color)
 
     override val backgroundColor: Int
-        get() = Color.CYAN
+        get() = getColorIntByRes(R.color.card_bg_color)
 
     override val primaryTextColor: Int
         get() = iconTint
@@ -30,4 +31,7 @@ object DarkTheme : FolioTheme {
 
     override val statusBarColor: Int
         get() = colorPrimary
+
+    override val cvLine: Int
+        get() = iconTint
 }

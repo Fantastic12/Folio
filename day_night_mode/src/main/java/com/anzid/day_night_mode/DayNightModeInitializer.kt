@@ -6,6 +6,7 @@ import com.anzid.day_night_mode.manager.DayNightModeManager
 import com.anzid.day_night_mode.manager.DayNightModeManagerImpl
 import com.anzid.day_night_mode.store.DayNightModeStore
 import com.anzid.day_night_mode.store.DefaultDayNightModeStore
+import com.anzid.day_night_mode.theme.Theme
 import com.anzid.day_night_mode.theme.ThemeId
 import com.anzid.day_night_mode.theme.ThemeModel
 
@@ -15,6 +16,10 @@ object DayNightModeInitializer {
     private lateinit var dayNightModeManager: DayNightModeManager
 
     internal val themes: MutableSet<ThemeModel> = mutableSetOf()
+
+    @Suppress("UNCHECKED_CAST")
+    @JvmStatic
+    fun <T : Theme> getSelectedTheme() = getDayNightModeManager().mode.theme as T
 
     @JvmStatic
     fun getDayNightMode() = getDayNightModeManager().mode

@@ -6,4 +6,8 @@ data class ThemeModel(val theme: Theme,
 
     @ThemeId
     internal var id: Int = 0
+
+    fun incrementId(themes: Array<ThemeModel>) {
+        id = themes.size + 1
+    }
 }

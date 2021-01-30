@@ -4,11 +4,13 @@
         <item>White theme</item>
         <item>Black theme</item>
         <item>Dark theme</item>
+        <item>Light theme</item>
     </string-array>
 
     <string-array name="reply_values">
         <item>white</item>
         <item>black</item>
         <item>dark</item>
+        <item>light</item>
     </string-array>
 </resources>

@@ -87,9 +87,7 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
 //        PortfolioFragmentExtKt.init(this);
         rv_portfolio.setAdapter(portfolioAdapter);
 
-        new Handler().postDelayed(() -> {
-            portfolioAdapter.setMdata(mdata);
-        }, 5000);
+        portfolioAdapter.setMdata(mdata);
 
     }
 
