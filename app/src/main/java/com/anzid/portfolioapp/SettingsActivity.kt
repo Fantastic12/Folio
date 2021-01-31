@@ -12,10 +12,7 @@ import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.DayNightModeInitializer
 import com.anzid.day_night_mode.views.base.BaseDayNightModeActivity
 import com.anzid.day_night_mode.views.base.BaseDayNightModePreferenceFragment
-import com.anzid.portfolioapp.themes.BlackTheme
-import com.anzid.portfolioapp.themes.DarkTheme
-import com.anzid.portfolioapp.themes.LightTheme
-import com.anzid.portfolioapp.themes.WhiteTheme
+import com.anzid.portfolioapp.themes.*
 import kotlinx.android.synthetic.main.settings_activity.*
 
 private const val TITLE_TAG = "settingsActivityTitle"
@@ -35,6 +32,12 @@ class SettingsActivity : BaseDayNightModeActivity(),
                     .commit()
         } else {
             title = savedInstanceState.getCharSequence(TITLE_TAG)
+        }
+
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                title_settings.text = getString(R.string.title_activity_settings)
+            }
         }
         supportActionBar?.hide()
         back_button.setOnClickListener {
@@ -71,7 +74,7 @@ class SettingsActivity : BaseDayNightModeActivity(),
                 .replace(R.id.settings, fragment)
                 .addToBackStack(null)
                 .commit()
-        title = pref.title
+        title_settings.text = pref.title
         return true
     }
 
