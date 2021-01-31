@@ -3,8 +3,6 @@ package com.anzid.portfolioapp
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -96,9 +94,9 @@ class SettingsActivity : BaseDayNightModeActivity(),
         }
     }
 
-    class MessagesFragment : BaseDayNightModePreferenceFragment() {
+    class AppearanceFragment : BaseDayNightModePreferenceFragment() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            setPreferencesFromResource(R.xml.messages_preferences, rootKey)
+            setPreferencesFromResource(R.xml.appearance_preferences, rootKey)
         }
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

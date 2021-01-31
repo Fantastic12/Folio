@@ -1,7 +1,7 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
-        app:fragment="com.anzid.portfolioapp.SettingsActivity$MessagesFragment"
+        app:fragment="com.anzid.portfolioapp.SettingsActivity$AppearanceFragment"
         app:icon="@drawable/ic_baseline_brightness"
         app:key="theme_header"
         app:title="@string/theme_header" />
