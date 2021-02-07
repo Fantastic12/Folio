@@ -6,7 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.anzid.day_night_mode.*
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 
-abstract class BaseDayNightModeTextView @JvmOverloads constructor(
+abstract class BaseDynamicThemeTextView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0

@@ -6,7 +6,7 @@ import com.anzid.day_night_mode.dayNightMode
 import com.anzid.day_night_mode.removeThemeListener
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 
-abstract class BaseDayNightModeActivity : AppCompatActivity(), ThemeChangedListener {
+abstract class BaseDynamicThemeActivity : AppCompatActivity(), ThemeChangedListener {
 
     override fun onResume() {
         super.onResume()

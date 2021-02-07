@@ -1,20 +1,20 @@
 package com.anzid.day_night_mode
 
 import android.content.Context
-import com.anzid.day_night_mode.store.DayNightModeStore
-import com.anzid.day_night_mode.store.DefaultDayNightModeStore
+import com.anzid.day_night_mode.store.DynamicThemeStore
+import com.anzid.day_night_mode.store.DefaultDynamicThemeStore
 import com.anzid.day_night_mode.theme.ThemeModel
 
-class DayNightModeConfiguration private constructor(
+class DynamicThemeConfiguration private constructor(
         private val context: Context,
         private val themes: Array<ThemeModel>,
-        private val dayNightModeStore: DayNightModeStore,
+        private val dynamicThemeStore: DynamicThemeStore,
         private val onModeChange: (DayNightMode) -> Unit
 ) {
 
     class Builder(private val context: Context) {
         private var themes = arrayOf<ThemeModel>()
-        private var dayNightModeStore: DayNightModeStore = DefaultDayNightModeStore(context)
+        private var dynamicThemeStore: DynamicThemeStore = DefaultDynamicThemeStore(context)
         private var onModeChange: (DayNightMode) -> Unit = {}
 
         fun setTheme(themeModel: ThemeModel) = apply {
@@ -22,23 +22,23 @@ class DayNightModeConfiguration private constructor(
             themes = themes.plusElement(themeModel)
         }
 
-        fun setStore(store: DayNightModeStore) = apply {
-            dayNightModeStore = store
+        fun setStore(store: DynamicThemeStore) = apply {
+            dynamicThemeStore = store
         }
 
         fun setOnModeChangeListener(modeChange: (DayNightMode) -> Unit) = apply {
             onModeChange = modeChange
         }
 
-        fun configure() = DayNightModeConfiguration(
+        fun configure() = DynamicThemeConfiguration(
                 context,
                 themes,
-                dayNightModeStore,
+                dynamicThemeStore,
                 onModeChange
         ).also {
             DayNightModeInitializer.initAppDayNightMode(
                     it.context,
-                    it.dayNightModeStore,
+                    it.dynamicThemeStore,
                     it.themes,
                     it.onModeChange
             )

@@ -2,15 +2,16 @@ package com.anzid.day_night_mode.views.base
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.anzid.day_night_mode.*
+import com.anzid.day_night_mode.addThemeListener
+import com.anzid.day_night_mode.removeThemeListener
 import com.anzid.day_night_mode.theme.ThemeChangedListener
+import com.google.android.material.card.MaterialCardView
 
-open class BaseDayNightModeConstraintLayout @JvmOverloads constructor(
+open class BaseDynamicThemeCardView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
-) : ConstraintLayout(context, attrs, defStyleAttr), ThemeChangedListener {
+) : MaterialCardView(context, attrs, defStyleAttr), ThemeChangedListener {
 
     override fun onFinishInflate() {
         super.onFinishInflate()

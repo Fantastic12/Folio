@@ -3,7 +3,7 @@ package com.anzid.portfolioapp
 import android.app.Application
 import android.preference.PreferenceManager
 import com.anzid.day_night_mode.DayNightMode
-import com.anzid.day_night_mode.DayNightModeConfiguration
+import com.anzid.day_night_mode.DynamicThemeConfiguration
 import com.anzid.day_night_mode.theme.ThemeModel
 import com.anzid.portfolioapp.themes.BlackTheme
 import com.anzid.portfolioapp.themes.DarkTheme
@@ -26,7 +26,7 @@ class FolioApp : Application() {
 
 
     private fun configureDayModeFeature() {
-        DayNightModeConfiguration.Builder(this)
+        DynamicThemeConfiguration.Builder(this)
                 .setTheme(ThemeModel(WhiteTheme, isDefaultDayMode = true))
                 .setTheme(ThemeModel(BlackTheme, isDefaultNightMode = true))
                 .setTheme(ThemeModel(DarkTheme))

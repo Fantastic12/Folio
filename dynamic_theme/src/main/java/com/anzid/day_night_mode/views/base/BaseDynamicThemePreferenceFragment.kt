@@ -10,7 +10,7 @@ import com.anzid.day_night_mode.dayNightMode
 import com.anzid.day_night_mode.removeThemeListener
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 
-abstract class BaseDayNightModePreferenceFragment : PreferenceFragmentCompat(), ThemeChangedListener {
+abstract class BaseDynamicThemePreferenceFragment : PreferenceFragmentCompat(), ThemeChangedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

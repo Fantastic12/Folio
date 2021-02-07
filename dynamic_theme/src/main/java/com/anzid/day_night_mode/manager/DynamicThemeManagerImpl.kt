@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.LayoutInflaterCompat
 import com.anzid.day_night_mode.*
 import com.anzid.day_night_mode.DayNightMode.Companion.updateThemeForMode
-import com.anzid.day_night_mode.store.DayNightModeStore
+import com.anzid.day_night_mode.store.DynamicThemeStore
 import com.anzid.day_night_mode.theme.Theme
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 import com.anzid.day_night_mode.views.sunny_or_moon.SunnyOrMoonChangeListener
 
-class DayNightModeManagerImpl(private val context: Context,
-                              private val store: DayNightModeStore,
-                              private val onModeChange: (DayNightMode) -> Unit) : DayNightModeManager {
+class DynamicThemeManagerImpl(private val context: Context,
+                              private val store: DynamicThemeStore,
+                              private val onModeChange: (DayNightMode) -> Unit) : DynamicThemeManager {
 
     private val listeners = mutableSetOf<ThemeChangedListener>()
     private val sunnyMoonListeners = mutableSetOf<SunnyOrMoonChangeListener>()
@@ -32,7 +32,7 @@ class DayNightModeManagerImpl(private val context: Context,
                                   factory: LayoutInflater.Factory2?) {
         LayoutInflaterCompat.setFactory2(
                 LayoutInflater.from(activity),
-                factory ?: DayNightModeLayoutInflater(activity.delegate)
+                factory ?: DynamicThemeLayoutInflater(activity.delegate)
         )
         updateStatusBar(activity)
     }

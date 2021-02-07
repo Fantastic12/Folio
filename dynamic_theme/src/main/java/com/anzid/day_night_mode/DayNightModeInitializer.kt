@@ -2,10 +2,10 @@ package com.anzid.day_night_mode
 
 import android.content.Context
 import android.util.Log
-import com.anzid.day_night_mode.manager.DayNightModeManager
-import com.anzid.day_night_mode.manager.DayNightModeManagerImpl
-import com.anzid.day_night_mode.store.DayNightModeStore
-import com.anzid.day_night_mode.store.DefaultDayNightModeStore
+import com.anzid.day_night_mode.manager.DynamicThemeManager
+import com.anzid.day_night_mode.manager.DynamicThemeManagerImpl
+import com.anzid.day_night_mode.store.DynamicThemeStore
+import com.anzid.day_night_mode.store.DefaultDynamicThemeStore
 import com.anzid.day_night_mode.theme.Theme
 import com.anzid.day_night_mode.theme.ThemeId
 import com.anzid.day_night_mode.theme.ThemeModel
@@ -13,36 +13,36 @@ import com.anzid.day_night_mode.theme.ThemeModel
 object DayNightModeInitializer {
 
     internal lateinit var appContext: Context
-    private lateinit var dayNightModeManager: DayNightModeManager
+    private lateinit var dynamicThemeManager: DynamicThemeManager
 
     internal val themes: MutableSet<ThemeModel> = mutableSetOf()
 
     @Suppress("UNCHECKED_CAST")
     @JvmStatic
-    fun <T : Theme> getSelectedTheme() = getDayNightModeManager().mode.theme as T
+    fun <T : Theme> getSelectedTheme() = getDynamicThemeManager().mode.theme as T
 
     @JvmStatic
-    fun getDayNightMode() = getDayNightModeManager().mode
+    fun getDayNightMode() = getDynamicThemeManager().mode
 
     @JvmStatic
-    fun getDayNightModeStore() = getDayNightModeManager().getDayNightModeStore()
+    fun getDayNightModeStore() = getDynamicThemeManager().getDayNightModeStore()
 
     @JvmStatic
-    fun getDayNightModeManager(): DayNightModeManager {
-        if (::dayNightModeManager.isInitialized.not()) {
+    fun getDynamicThemeManager(): DynamicThemeManager {
+        if (::dynamicThemeManager.isInitialized.not()) {
             if (::appContext.isInitialized.not()) throw AssertionError("initAppDayNightMode() was not called")
-            dayNightModeManager = DayNightModeManagerImpl(
+            dynamicThemeManager = DynamicThemeManagerImpl(
                     appContext,
-                    DefaultDayNightModeStore(appContext)
+                    DefaultDynamicThemeStore(appContext)
             ) {}
             Log.e(DayNightModeInitializer.toString(), "init dayNightModeManager by default")
         }
 
-        return dayNightModeManager
+        return dynamicThemeManager
     }
 
     internal fun initAppDayNightMode(context: Context,
-                                     store: DayNightModeStore,
+                                     store: DynamicThemeStore,
                                      theme: Array<ThemeModel>,
                                      onModeChange: (DayNightMode) -> Unit) {
         appContext = context
@@ -76,12 +76,12 @@ object DayNightModeInitializer {
         throw AssertionError("not find isDefaultDayMode = true")
     }
 
-    private fun initDayNightModeManager(store: DayNightModeStore?, onModeChange: (DayNightMode) -> Unit) {
-        if (::dayNightModeManager.isInitialized.not()) {
+    private fun initDayNightModeManager(store: DynamicThemeStore?, onModeChange: (DayNightMode) -> Unit) {
+        if (::dynamicThemeManager.isInitialized.not()) {
             if (::appContext.isInitialized.not()) throw AssertionError("initAppDayNightMode() was not called")
-            dayNightModeManager = DayNightModeManagerImpl(
+            dynamicThemeManager = DynamicThemeManagerImpl(
                     appContext,
-                    store ?: DefaultDayNightModeStore(appContext),
+                    store ?: DefaultDynamicThemeStore(appContext),
                     onModeChange
             )
         }

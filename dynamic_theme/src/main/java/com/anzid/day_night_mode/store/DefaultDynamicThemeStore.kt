@@ -7,7 +7,7 @@ import com.anzid.day_night_mode.DayNightModeInitializer
 import com.anzid.day_night_mode.DayNightModeInitializer.themes
 import com.anzid.day_night_mode.theme.Theme
 
-internal class DefaultDayNightModeStore(private val context: Context) : DayNightModeStore {
+internal class DefaultDynamicThemeStore(private val context: Context) : DynamicThemeStore {
 
     private val prefMode = "pref_mode"
     private val selectedDayTheme = "pref_selected_theme_for_day"

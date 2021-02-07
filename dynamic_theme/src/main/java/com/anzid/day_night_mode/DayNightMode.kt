@@ -1,6 +1,6 @@
 package com.anzid.day_night_mode
 
-import com.anzid.day_night_mode.store.DayNightModeStore
+import com.anzid.day_night_mode.store.DynamicThemeStore
 import com.anzid.day_night_mode.theme.Theme
 
 sealed class DayNightMode {
@@ -13,7 +13,7 @@ sealed class DayNightMode {
         private const val NIGHT_MODE = 1
 
         fun getModeWithSelectedTheme(@DayNightModeInt mode: Int,
-                                     store: DayNightModeStore): DayNightMode {
+                                     store: DynamicThemeStore): DayNightMode {
             return when (mode) {
                 DAY_MODE -> DayMode(store.getSelectedThemeForDayMode())
                 NIGHT_MODE -> NightMode(store.getSelectedThemeForNightMode())

@@ -8,18 +8,18 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.DayNightModeInitializer
-import com.anzid.day_night_mode.views.base.BaseDayNightModeActivity
-import com.anzid.day_night_mode.views.base.BaseDayNightModePreferenceFragment
+import com.anzid.day_night_mode.views.base.BaseDynamicThemeActivity
+import com.anzid.day_night_mode.views.base.BaseDynamicThemePreferenceFragment
 import com.anzid.portfolioapp.themes.*
 import kotlinx.android.synthetic.main.settings_activity.*
 
 private const val TITLE_TAG = "settingsActivityTitle"
 
-class SettingsActivity : BaseDayNightModeActivity(),
+class SettingsActivity : BaseDynamicThemeActivity(),
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DayNightModeInitializer.getDayNightModeManager().initModeInflater(this)
+        DayNightModeInitializer.getDynamicThemeManager().initModeInflater(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)
 
@@ -83,7 +83,7 @@ class SettingsActivity : BaseDayNightModeActivity(),
         back_button.setColorFilter(mode.theme.primaryTextColor)
     }
 
-    class HeaderFragment : BaseDayNightModePreferenceFragment() {
+    class HeaderFragment : BaseDynamicThemePreferenceFragment() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.header_preferences, rootKey)
         }
@@ -94,7 +94,7 @@ class SettingsActivity : BaseDayNightModeActivity(),
         }
     }
 
-    class AppearanceFragment : BaseDayNightModePreferenceFragment() {
+    class AppearanceFragment : BaseDynamicThemePreferenceFragment() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.appearance_preferences, rootKey)
         }
@@ -109,7 +109,7 @@ class SettingsActivity : BaseDayNightModeActivity(),
                     "light" -> LightTheme
                     else -> throw AssertionError()
                 }
-                DayNightModeInitializer.getDayNightModeManager().updateSelectedThemeAndModeIfNeeded(newTheme)
+                DayNightModeInitializer.getDynamicThemeManager().updateSelectedThemeAndModeIfNeeded(newTheme)
                 true
             }
         }

@@ -39,7 +39,7 @@ class DayNightModeHelper(private val activity: Activity,
         screen.setImageBitmap(bitmap)
         screen.visibility = View.VISIBLE
 
-        with(DayNightModeInitializer.getDayNightModeManager()) {
+        with(DayNightModeInitializer.getDynamicThemeManager()) {
             mode = updateMode()
             updateStatusBar(activity)
         }

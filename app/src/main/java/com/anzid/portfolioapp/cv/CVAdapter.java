@@ -9,13 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.anzid.day_night_mode.DayNightModeAdapter;
+import com.anzid.day_night_mode.DynamicThemeAdapter;
 import com.anzid.portfolioapp.R;
 import com.anzid.portfolioapp.themes.ExtKt;
 
 import java.util.List;
 
-public class CVAdapter extends DayNightModeAdapter<CVAdapter.CVViewHolder> {
+public class CVAdapter extends DynamicThemeAdapter<CVAdapter.CVViewHolder> {
 
 
     List<CVItem> mdata;

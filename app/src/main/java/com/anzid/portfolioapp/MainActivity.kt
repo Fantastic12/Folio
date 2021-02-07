@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), Callback {
     var selectedMenuPos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DayNightModeInitializer.getDayNightModeManager().initModeInflater(this)
+        DayNightModeInitializer.getDynamicThemeManager().initModeInflater(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), Callback {
 
     override fun onResume() {
         super.onResume()
-        DayNightModeInitializer.getDayNightModeManager().updateStatusBar(this)
+        DayNightModeInitializer.getDynamicThemeManager().updateStatusBar(this)
     }
 
     private fun initNightMode() {

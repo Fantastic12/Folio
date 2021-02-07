@@ -3,7 +3,7 @@ package com.anzid.day_night_mode.store
 import com.anzid.day_night_mode.DayNightMode
 import com.anzid.day_night_mode.theme.Theme
 
-interface DayNightModeStore {
+interface DynamicThemeStore {
     fun setDayNightMode(mode: DayNightMode)
     fun getDayNightMode(): DayNightMode
 

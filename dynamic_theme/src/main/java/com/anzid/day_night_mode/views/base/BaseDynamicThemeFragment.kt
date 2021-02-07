@@ -9,7 +9,7 @@ import com.anzid.day_night_mode.dayNightMode
 import com.anzid.day_night_mode.removeThemeListener
 import com.anzid.day_night_mode.theme.ThemeChangedListener
 
-class BaseDayNightModeFragment : Fragment(), ThemeChangedListener {
+class BaseDynamicThemeFragment : Fragment(), ThemeChangedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
