@@ -14,7 +14,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/codogen/dstarannotation" />
             <option value="$PROJECT_DIR$/codogen/dstarcodegeneration" />
-            <option value="$PROJECT_DIR$/day_night_mode" />
+            <option value="$PROJECT_DIR$/dynamic_theme" />
             <option value="$PROJECT_DIR$/storage" />
             <option value="$PROJECT_DIR$/utils" />
           </set>

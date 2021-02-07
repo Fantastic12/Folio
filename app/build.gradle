@@ -61,7 +61,7 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation project(Modules.UTILS)
-    implementation project(":day_night_mode")
+    implementation project(':dynamic_theme')
     implementation 'com.github.amyu:StackCardLayoutManager:1.0'
     implementation 'com.github.mcxtzhang:ZLayoutManager:V1.1.0'
 

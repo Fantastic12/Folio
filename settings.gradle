@@ -6,4 +6,4 @@ include ':dstarannotation', ':dstarcodegeneration'
 project(':dstarannotation').projectDir = file('codogen/dstarannotation')
 project(':dstarcodegeneration').projectDir = file('codogen/dstarcodegeneration')
 
-include ':day_night_mode'
+include ':dynamic_theme'
