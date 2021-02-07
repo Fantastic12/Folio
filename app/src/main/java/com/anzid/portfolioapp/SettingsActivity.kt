@@ -6,10 +6,10 @@ import android.view.View
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.anzid.day_night_mode.DayNightMode
-import com.anzid.day_night_mode.DayNightModeInitializer
-import com.anzid.day_night_mode.views.base.BaseDynamicThemeActivity
-import com.anzid.day_night_mode.views.base.BaseDynamicThemePreferenceFragment
+import com.anzid.dynamic_theme.DayNightMode
+import com.anzid.dynamic_theme.DayNightModeInitializer
+import com.anzid.dynamic_theme.views.base.BaseDynamicThemeActivity
+import com.anzid.dynamic_theme.views.base.BaseDynamicThemePreferenceFragment
 import com.anzid.portfolioapp.themes.*
 import kotlinx.android.synthetic.main.settings_activity.*
 

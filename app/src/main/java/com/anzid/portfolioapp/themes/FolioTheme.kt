@@ -1,7 +1,7 @@
 package com.anzid.portfolioapp.themes
 
 import androidx.annotation.ColorInt
-import com.anzid.day_night_mode.theme.Theme
+import com.anzid.dynamic_theme.theme.Theme
 import com.anzid.portfolioapp.R
 
 interface FolioTheme : Theme {

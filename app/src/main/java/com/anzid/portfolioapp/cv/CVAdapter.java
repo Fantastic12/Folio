@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.anzid.day_night_mode.DynamicThemeAdapter;
+import com.anzid.dynamic_theme.DynamicThemeAdapter;
 import com.anzid.portfolioapp.R;
 import com.anzid.portfolioapp.themes.ExtKt;
 

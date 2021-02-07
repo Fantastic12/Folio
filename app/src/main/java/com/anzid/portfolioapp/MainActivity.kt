@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.anzid.day_night_mode.DayNightModeHelper
-import com.anzid.day_night_mode.DayNightModeInitializer
+import com.anzid.dynamic_theme.DayNightModeHelper
+import com.anzid.dynamic_theme.DayNightModeInitializer
 import com.anzid.portfolioapp.sidemenu.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.anzid.day_night_mode.DayNightModeInitializer;
+import com.anzid.dynamic_theme.DayNightModeInitializer;
 import com.anzid.portfolioapp.R;
 
 import java.util.List;

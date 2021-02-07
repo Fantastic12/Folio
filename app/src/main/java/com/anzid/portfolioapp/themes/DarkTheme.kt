@@ -1,7 +1,6 @@
 package com.anzid.portfolioapp.themes
 
 import android.graphics.Color
-import com.anzid.day_night_mode.theme.Theme
 
 object DarkTheme : FolioTheme {
     override val isNightMode: Boolean
