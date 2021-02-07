@@ -9,26 +9,35 @@ import android.os.Build
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.ImageView
-import androidx.annotation.RequiresApi
 import com.anzid.dynamic_theme.DynamicThemeInitializer
 import com.anzid.dynamic_theme.day_night_mode.DayNightMode.Companion.updateMode
 import com.anzid.dynamic_theme.interpolator.Easings
 import com.anzid.dynamic_theme.views.sunny_or_moon.SunnyOrMoonImageView
+import java.lang.AssertionError
 import kotlin.math.hypot
 
-class DayNightModeHelper(private val activity: Activity,
-                         private val mainContainer: View,
-                         private val screen: ImageView,
-                         private val nightMode: SunnyOrMoonImageView) {
+internal class DayNightModeHelper(private val activity: Activity,
+                                  private val mainContainer: View,
+                                  private val screen: ImageView,
+                                  private val nightMode: SunnyOrMoonImageView) {
 
-    private var animationDuration = 400L
+    internal companion object {
+        var DEFAULT_ANIMATION = 400L
+    }
+
+    private var animationDuration = DEFAULT_ANIMATION
 
     fun setAnimationDuration(duration: Long) {
         animationDuration = duration
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun updateDayNightMode() {
+    fun initNightModeListeners() {
+        nightMode.setOnClickListener {
+            updateDayNightMode()
+        }
+    }
+
+    private fun updateDayNightMode() {
         if (screen.visibility == View.VISIBLE) return
 
         val w = mainContainer.measuredWidth
@@ -47,13 +56,16 @@ class DayNightModeHelper(private val activity: Activity,
         animate(w, h)
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun animate(mainContainerWidth: Int, mainContainerHeight: Int) {
         val finalRadius = hypot(mainContainerWidth.toFloat(), mainContainerHeight.toFloat())
         val x = (nightMode.right - nightMode.left) / 2 + nightMode.left
         val y = (nightMode.bottom - nightMode.top) / 2 + nightMode.top
 
-        val anim: Animator = ViewAnimationUtils.createCircularReveal(screen, x, y, finalRadius, 0f)
+        val anim: Animator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ViewAnimationUtils.createCircularReveal(screen, x, y, finalRadius, 0f)
+        } else {
+           throw AssertionError("Unsupported")
+        }
         anim.duration = animationDuration
         anim.interpolator = Easings.easeInOutQuad
         anim.addListener(object : AnimatorListenerAdapter() {

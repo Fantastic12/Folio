@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.anzid.dynamic_theme.day_night_mode.DayNightModeHelper
 import com.anzid.dynamic_theme.DynamicThemeInitializer
+import com.anzid.dynamic_theme.day_night_mode.DayNightModeConfiguration
 import com.anzid.portfolioapp.sidemenu.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,9 +15,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), Callback {
 
     private var menuItems: List<MenuItem> = emptyList()
-    private val dayNightModeHelper by lazy {
-        DayNightModeHelper(this, main_container, screen, night_mode)
-    }
     lateinit var adapter: MenuAdapter
     lateinit var listener: MainViewPagerOnChangeListener
 
@@ -29,8 +26,9 @@ class MainActivity : AppCompatActivity(), Callback {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
+        initConfigDynamicMode()
         setupSideMenu()
-        initNightMode()
+        initListeners()
     }
 
     override fun onResume() {
@@ -38,16 +36,21 @@ class MainActivity : AppCompatActivity(), Callback {
         DynamicThemeInitializer.getDynamicThemeManager().updateStatusBar(this)
     }
 
-    private fun initNightMode() {
-        night_mode.setOnClickListener {
-            dayNightModeHelper.updateDayNightMode()
-        }
-
+    private fun initListeners() {
         settings.setOnClickListener {
             Intent(this, SettingsActivity::class.java).also {
                 startActivity(it)
             }
         }
+    }
+
+    private fun initConfigDynamicMode() {
+        DayNightModeConfiguration.Builder(this)
+                .setAnimationDuration(500)
+                .setMainContainer(main_container)
+                .setScreenPlaceholder(screen)
+                .setSunnyOrMoonImageView(night_mode)
+                .configure()
     }
 
     private fun setupSideMenu() {
