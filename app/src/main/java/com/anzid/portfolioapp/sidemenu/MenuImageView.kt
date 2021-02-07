@@ -3,8 +3,8 @@ package com.anzid.portfolioapp.sidemenu
 import android.content.Context
 import android.util.AttributeSet
 import androidx.core.content.ContextCompat
-import com.anzid.dynamic_theme.DayNightMode
-import com.anzid.dynamic_theme.DayNightModeInitializer.getDayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
+import com.anzid.dynamic_theme.DynamicThemeInitializer.getDayNightMode
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemeImageView
 import com.anzid.portfolioapp.R
 

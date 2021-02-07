@@ -2,9 +2,9 @@ package com.anzid.dynamic_theme.store
 
 import android.content.Context
 import android.preference.PreferenceManager
-import com.anzid.dynamic_theme.DayNightMode
-import com.anzid.dynamic_theme.DayNightModeInitializer
-import com.anzid.dynamic_theme.DayNightModeInitializer.themes
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
+import com.anzid.dynamic_theme.DynamicThemeInitializer
+import com.anzid.dynamic_theme.DynamicThemeInitializer.themes
 import com.anzid.dynamic_theme.theme.Theme
 
 internal class DefaultDynamicThemeStore(private val context: Context) : DynamicThemeStore {
@@ -35,7 +35,7 @@ internal class DefaultDynamicThemeStore(private val context: Context) : DynamicT
     }
 
     override fun getSelectedThemeForDayMode(): Theme {
-        val id = PreferenceManager.getDefaultSharedPreferences(context).getInt(selectedDayTheme, DayNightModeInitializer.getDefaultDayModeThemeId())
+        val id = PreferenceManager.getDefaultSharedPreferences(context).getInt(selectedDayTheme, DynamicThemeInitializer.getDefaultDayModeThemeId())
 
         themes.forEach {
             if (it.id == id) return it.theme
@@ -45,7 +45,7 @@ internal class DefaultDynamicThemeStore(private val context: Context) : DynamicT
     }
 
     override fun getSelectedThemeForNightMode(): Theme {
-        val id = PreferenceManager.getDefaultSharedPreferences(context).getInt(selectedNightTheme, DayNightModeInitializer.getDefaultNightModeThemeId())
+        val id = PreferenceManager.getDefaultSharedPreferences(context).getInt(selectedNightTheme, DynamicThemeInitializer.getDefaultNightModeThemeId())
 
         themes.forEach {
             if (it.id == id) return it.theme

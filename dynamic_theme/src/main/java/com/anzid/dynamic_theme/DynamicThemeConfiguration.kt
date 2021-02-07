@@ -1,6 +1,7 @@
 package com.anzid.dynamic_theme
 
 import android.content.Context
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.store.DynamicThemeStore
 import com.anzid.dynamic_theme.store.DefaultDynamicThemeStore
 import com.anzid.dynamic_theme.theme.ThemeModel
@@ -36,7 +37,7 @@ class DynamicThemeConfiguration private constructor(
                 dynamicThemeStore,
                 onModeChange
         ).also {
-            DayNightModeInitializer.initAppDayNightMode(
+            DynamicThemeInitializer.initAppDayNightMode(
                     it.context,
                     it.dynamicThemeStore,
                     it.themes,

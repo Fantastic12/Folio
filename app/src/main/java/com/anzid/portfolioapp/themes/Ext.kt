@@ -1,5 +1,5 @@
 package com.anzid.portfolioapp.themes
 
-import com.anzid.dynamic_theme.DayNightModeInitializer
+import com.anzid.dynamic_theme.DynamicThemeInitializer
 
-fun getSelectedTheme() = DayNightModeInitializer.getSelectedTheme<FolioTheme>()
+fun getSelectedTheme() = DynamicThemeInitializer.getSelectedTheme<FolioTheme>()

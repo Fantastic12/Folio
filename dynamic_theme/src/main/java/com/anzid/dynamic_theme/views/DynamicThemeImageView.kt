@@ -2,7 +2,7 @@ package com.anzid.dynamic_theme.views
 
 import android.content.Context
 import android.util.AttributeSet
-import com.anzid.dynamic_theme.DayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.dayNightMode
 import com.anzid.dynamic_theme.theme.ThemeChangedListener
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemeImageView

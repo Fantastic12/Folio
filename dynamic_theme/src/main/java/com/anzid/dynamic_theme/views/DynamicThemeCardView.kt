@@ -3,7 +3,7 @@ package com.anzid.dynamic_theme.views
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
-import com.anzid.dynamic_theme.DayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.dayNightMode
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemeCardView
 

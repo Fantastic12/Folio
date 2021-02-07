@@ -6,8 +6,8 @@ import android.view.View
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.anzid.dynamic_theme.DayNightMode
-import com.anzid.dynamic_theme.DayNightModeInitializer
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
+import com.anzid.dynamic_theme.DynamicThemeInitializer
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemeActivity
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemePreferenceFragment
 import com.anzid.portfolioapp.themes.*
@@ -19,7 +19,7 @@ class SettingsActivity : BaseDynamicThemeActivity(),
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DayNightModeInitializer.getDynamicThemeManager().initModeInflater(this)
+        DynamicThemeInitializer.getDynamicThemeManager().initModeInflater(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)
 
@@ -109,7 +109,7 @@ class SettingsActivity : BaseDynamicThemeActivity(),
                     "light" -> LightTheme
                     else -> throw AssertionError()
                 }
-                DayNightModeInitializer.getDynamicThemeManager().updateSelectedThemeAndModeIfNeeded(newTheme)
+                DynamicThemeInitializer.getDynamicThemeManager().updateSelectedThemeAndModeIfNeeded(newTheme)
                 true
             }
         }

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.anzid.dynamic_theme.DayNightModeInitializer;
+import com.anzid.dynamic_theme.DynamicThemeInitializer;
 import com.anzid.portfolioapp.R;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.tv_desc.setText(mdata.get(position).getDesc());
         holder.img.setImageResource(mdata.get(position).getImg());
 
-        holder.layout.getBackground().setTint(DayNightModeInitializer.getDayNightMode().getTheme().getBackgroundColor());
+        holder.layout.getBackground().setTint(DynamicThemeInitializer.getDayNightMode().getTheme().getBackgroundColor());
     }
 
     @Override

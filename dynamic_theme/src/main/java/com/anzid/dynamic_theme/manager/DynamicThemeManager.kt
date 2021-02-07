@@ -4,7 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.anzid.dynamic_theme.ChangeListener
-import com.anzid.dynamic_theme.DayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.store.DynamicThemeStore
 import com.anzid.dynamic_theme.theme.Theme
 

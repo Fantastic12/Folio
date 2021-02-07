@@ -2,6 +2,7 @@ package com.anzid.dynamic_theme
 
 import android.content.Context
 import android.util.Log
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.manager.DynamicThemeManager
 import com.anzid.dynamic_theme.manager.DynamicThemeManagerImpl
 import com.anzid.dynamic_theme.store.DynamicThemeStore
@@ -10,7 +11,7 @@ import com.anzid.dynamic_theme.theme.Theme
 import com.anzid.dynamic_theme.theme.ThemeId
 import com.anzid.dynamic_theme.theme.ThemeModel
 
-object DayNightModeInitializer {
+object DynamicThemeInitializer {
 
     internal lateinit var appContext: Context
     private lateinit var dynamicThemeManager: DynamicThemeManager
@@ -35,7 +36,7 @@ object DayNightModeInitializer {
                     appContext,
                     DefaultDynamicThemeStore(appContext)
             ) {}
-            Log.e(DayNightModeInitializer.toString(), "init dayNightModeManager by default")
+            Log.e(DynamicThemeInitializer.toString(), "init dayNightModeManager by default")
         }
 
         return dynamicThemeManager

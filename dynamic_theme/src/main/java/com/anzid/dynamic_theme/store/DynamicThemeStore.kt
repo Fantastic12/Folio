@@ -1,6 +1,6 @@
 package com.anzid.dynamic_theme.store
 
-import com.anzid.dynamic_theme.DayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.theme.Theme
 
 interface DynamicThemeStore {

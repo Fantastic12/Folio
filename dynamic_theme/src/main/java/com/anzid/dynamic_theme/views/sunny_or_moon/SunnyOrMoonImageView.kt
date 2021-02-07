@@ -6,6 +6,8 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import com.anzid.dynamic_theme.*
 import com.anzid.dynamic_theme.dayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
+import com.anzid.dynamic_theme.day_night_mode.NightMode
 
 class SunnyOrMoonImageView @JvmOverloads constructor(context: Context,
                                                      attrs: AttributeSet? = null,

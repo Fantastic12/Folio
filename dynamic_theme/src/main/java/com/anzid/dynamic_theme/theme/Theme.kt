@@ -4,7 +4,7 @@ import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
-import com.anzid.dynamic_theme.DayNightModeInitializer
+import com.anzid.dynamic_theme.DynamicThemeInitializer
 
 interface Theme {
     val isNightMode: Boolean
@@ -35,7 +35,7 @@ interface Theme {
 
     @ColorInt
     fun getColorIntByRes(@ColorRes colorRes: Int): Int {
-        return ContextCompat.getColor(DayNightModeInitializer.appContext, colorRes)
+        return ContextCompat.getColor(DynamicThemeInitializer.appContext, colorRes)
     }
 
     @ColorInt

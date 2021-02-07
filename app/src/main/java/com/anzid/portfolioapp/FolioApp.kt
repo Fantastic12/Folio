@@ -2,7 +2,7 @@ package com.anzid.portfolioapp
 
 import android.app.Application
 import android.preference.PreferenceManager
-import com.anzid.dynamic_theme.DayNightMode
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.DynamicThemeConfiguration
 import com.anzid.dynamic_theme.theme.ThemeModel
 import com.anzid.portfolioapp.themes.BlackTheme

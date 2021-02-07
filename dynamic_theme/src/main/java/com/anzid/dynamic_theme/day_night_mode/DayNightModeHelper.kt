@@ -1,4 +1,4 @@
-package com.anzid.dynamic_theme
+package com.anzid.dynamic_theme.day_night_mode
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -10,7 +10,8 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import com.anzid.dynamic_theme.DayNightMode.Companion.updateMode
+import com.anzid.dynamic_theme.DynamicThemeInitializer
+import com.anzid.dynamic_theme.day_night_mode.DayNightMode.Companion.updateMode
 import com.anzid.dynamic_theme.interpolator.Easings
 import com.anzid.dynamic_theme.views.sunny_or_moon.SunnyOrMoonImageView
 import kotlin.math.hypot
@@ -39,7 +40,7 @@ class DayNightModeHelper(private val activity: Activity,
         screen.setImageBitmap(bitmap)
         screen.visibility = View.VISIBLE
 
-        with(DayNightModeInitializer.getDynamicThemeManager()) {
+        with(DynamicThemeInitializer.getDynamicThemeManager()) {
             mode = updateMode()
             updateStatusBar(activity)
         }
@@ -59,7 +60,7 @@ class DayNightModeHelper(private val activity: Activity,
             override fun onAnimationEnd(animation: Animator?) {
                 screen.setImageDrawable(null)
                 screen.visibility = View.GONE
-                nightMode.onModeChangedDefault(DayNightModeInitializer.getDayNightMode())
+                nightMode.onModeChangedDefault(DynamicThemeInitializer.getDayNightMode())
             }
         })
         anim.start()

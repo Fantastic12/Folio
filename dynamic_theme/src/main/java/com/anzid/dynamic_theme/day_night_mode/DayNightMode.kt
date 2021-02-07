@@ -1,5 +1,7 @@
-package com.anzid.dynamic_theme
+package com.anzid.dynamic_theme.day_night_mode
 
+import com.anzid.dynamic_theme.DynamicThemeInitializer
+import com.anzid.dynamic_theme.store
 import com.anzid.dynamic_theme.store.DynamicThemeStore
 import com.anzid.dynamic_theme.theme.Theme
 
@@ -22,14 +24,14 @@ sealed class DayNightMode {
         }
 
         fun updateMode(): DayNightMode {
-            return when (DayNightModeInitializer.getDayNightMode()) {
+            return when (DynamicThemeInitializer.getDayNightMode()) {
                 is DayMode -> NightMode(store.getSelectedThemeForNightMode())
                 is NightMode -> DayMode(store.getSelectedThemeForDayMode())
             }
         }
 
         fun updateThemeForMode(): DayNightMode {
-            return when (DayNightModeInitializer.getDayNightMode()) {
+            return when (DynamicThemeInitializer.getDayNightMode()) {
                 is DayMode -> DayMode(store.getSelectedThemeForDayMode())
                 is NightMode -> NightMode(store.getSelectedThemeForNightMode())
             }
