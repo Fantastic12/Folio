@@ -27,11 +27,11 @@ internal class DayNightModeHelper(private val activity: Activity,
 
     private var animationDuration = DEFAULT_ANIMATION
 
-    fun setAnimationDuration(duration: Long) {
+    internal fun setAnimationDuration(duration: Long) {
         animationDuration = duration
     }
 
-    fun initNightModeListeners() {
+    internal fun initNightModeListeners() {
         nightMode.setOnClickListener {
             updateDayNightMode()
         }
@@ -64,7 +64,7 @@ internal class DayNightModeHelper(private val activity: Activity,
         val anim: Animator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ViewAnimationUtils.createCircularReveal(screen, x, y, finalRadius, 0f)
         } else {
-           throw AssertionError("Unsupported")
+            throw AssertionError("Unsupported")
         }
         anim.duration = animationDuration
         anim.interpolator = Easings.easeInOutQuad

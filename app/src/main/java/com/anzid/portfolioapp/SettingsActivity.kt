@@ -1,5 +1,6 @@
 package com.anzid.portfolioapp
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
@@ -40,6 +41,9 @@ class SettingsActivity : BaseDynamicThemeActivity(),
         supportActionBar?.hide()
         back_button.setOnClickListener {
             onBackPressed()
+        }
+        fab.setOnClickListener {
+            startActivity(Intent(this, AddResumeActivity::class.java))
         }
     }
 
