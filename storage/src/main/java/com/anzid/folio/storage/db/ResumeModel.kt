@@ -9,5 +9,4 @@ data class ResumeModel(val id: Long,
                        val iconLink: String,
                        val jobPosition: String,
                        val resumeDescription: String,
-                       val currentOrLastJobPosition: String,
                        val dataModel: ResumeDataModel)

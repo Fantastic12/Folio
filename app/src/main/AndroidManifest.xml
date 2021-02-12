@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".AddResumeActivity" >
+        <activity android:name=".add_resume.AddResumeActivity" >
         </activity>
         <activity android:name=".SettingsActivity" />
         <activity

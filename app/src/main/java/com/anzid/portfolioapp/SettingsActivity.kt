@@ -11,6 +11,7 @@ import com.anzid.dynamic_theme.day_night_mode.DayNightMode
 import com.anzid.dynamic_theme.DynamicThemeInitializer
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemeActivity
 import com.anzid.dynamic_theme.views.base.BaseDynamicThemePreferenceFragment
+import com.anzid.portfolioapp.add_resume.AddResumeActivity
 import com.anzid.portfolioapp.themes.*
 import kotlinx.android.synthetic.main.settings_activity.*
 

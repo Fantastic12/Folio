@@ -8,12 +8,12 @@ internal class ResumeMapper : Mapper<ResumeEntity, ResumeModel> {
 
     override fun mapToEntity(model: ResumeModel): ResumeEntity = with(model) {
         ResumeEntity(
-                id, name, iconLink, jobPosition, resumeDescription, currentOrLastJobPosition, dataModel.toJson()
+                id, name, iconLink, jobPosition, resumeDescription, dataModel.toJson()
         )
     }
 
     override fun mapToModel(entity: ResumeEntity): ResumeModel = with(entity) {
-        ResumeModel(id, name, iconLink, jobPosition, resumeDescription, currentOrLastJobPosition,
+        ResumeModel(id, name, iconLink, jobPosition, resumeDescription,
                 GsonBuilder().create().fromJson(dataModel, ResumeDataModel::class.java)
         )
     }

@@ -5,4 +5,4 @@ import com.anzid.folio.storage.db.entity.ResumeEntity
 import com.anzid.utils.room.BaseDao
 
 @Dao
-interface ResumeDao : BaseDao<ResumeEntity>
+internal interface ResumeDao : BaseDao<ResumeEntity>
